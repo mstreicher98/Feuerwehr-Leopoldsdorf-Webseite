@@ -1,0 +1,6 @@
+.block {
+  text-align: justify;
+}
+.highlight {
+  color: light-dark(var(--mantine-color-red-7), var(--mantine-color-red-7)) !important;
+}

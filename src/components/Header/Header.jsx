@@ -81,7 +81,7 @@ const buergerserviceData = [
   {
     icon: IconSpeakerphone,
     title: "Sirenensignale",
-    description: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr",
+    description: "Alle Sirenensignale des österreichischen Zivilschutzsystems",
     link: "/buergerservice/sirenensignale",
   },
   {
