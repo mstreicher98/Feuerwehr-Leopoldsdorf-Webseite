@@ -1,0 +1,32 @@
+.center {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.input {
+
+  &:focus-within {
+    outline: rem(2px) solid var(--mantine-color-red-7);
+    border-color: transparent;
+  }
+}
+
+.dark {
+  @mixin dark {
+    display: none;
+  }
+
+  @mixin light {
+    display: block;
+  }
+}
+
+.light {
+  @mixin light {
+    display: none;
+  }
+
+  @mixin dark {
+    display: block;
+  }
+}

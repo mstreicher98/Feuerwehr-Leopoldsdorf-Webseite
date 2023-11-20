@@ -1,0 +1,11 @@
+.border {
+    border-bottom: rem(1px) solid light-dark(var(--mantine-color-gray-2), var(--mantine-color-dark-4));
+}
+.error {
+    font-size: rem(250);
+}
+.subtext {
+    font-size: rem(30);
+}
+
+
