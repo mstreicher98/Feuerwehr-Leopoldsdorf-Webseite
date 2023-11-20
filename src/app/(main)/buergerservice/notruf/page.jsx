@@ -26,7 +26,7 @@ export default function Notruf() {
             Notrufe sind kostenlos und funktionieren sowohl aus der Telefonzelle ohne Münzen als auch vom Handy (auch ohne eingelegter Simkarte) aus.
           </p>
           <p className={classes.block}>
-            Wichtig beim Absenden eines Notrufs sind die <span className={classes.highlight}>fünf W's</span>. Nur dadurch kann Ihnen die richtige Hilfe rasch geschickt werden. Der Notruf wird durch einen Diensthabenden an der Leitstelle entgegengenommen.
+            Wichtig beim Absenden eines Notrufs sind die <span className={classes.highlight}>fünf W&apos;s</span>. Nur dadurch kann Ihnen die richtige Hilfe rasch geschickt werden. Der Notruf wird durch einen Diensthabenden an der Leitstelle entgegengenommen.
           </p>
         </TypographyStylesProvider>
       </Text>
