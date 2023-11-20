@@ -2,6 +2,7 @@ import "@mantine/core/styles.css";
 import "../../style/styles.css";
 
 import { MantineProvider, ColorSchemeScript } from "@mantine/core";
+import { Analytics } from '@vercel/analytics/react';
 import MainLayout from "@/components/Layouts/MainLayout";
 
 export default function RootLayout({ children }) {
@@ -16,7 +17,8 @@ export default function RootLayout({ children }) {
       </head>
       <body>
         <MantineProvider>
-          <MainLayout> {children}</MainLayout>
+          <Analytics />
+          <MainLayout>{children}</MainLayout>
         </MantineProvider>
       </body>
     </html>
