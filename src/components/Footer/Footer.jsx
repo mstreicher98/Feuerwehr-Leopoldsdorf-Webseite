@@ -113,7 +113,7 @@ export default function Footer() {
               </Text>
             </Text>
             <Text className={classes.link}>
-              Bei Spenden an die Feuerwehr bitte als Zahlungsreferenz "Spende"
+              Bei Spenden an die Feuerwehr bitte als Zahlungsreferenz {'"'}Spende{'"'}
               anführen.
             </Text>
           </div>
