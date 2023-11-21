@@ -1,4 +1,7 @@
+import { Banner } from "@/components/Banner/Banner";
 import Main from "@/components/Main/Main";
+import { MainBeitrag } from "@/components/MainBeitrag/MainBeitrag";
+import { Image } from "@mantine/core";
 
 export const metadata = {
   title: "Freiwillige Feuerwehr Leopoldsdorf",
@@ -7,5 +10,9 @@ export const metadata = {
 };
 
 export default function Startseite() {
-  return <Main></Main>;
+  return (<>
+    <Banner />
+    <Main>
+      <MainBeitrag />
+    </Main></>);
 }

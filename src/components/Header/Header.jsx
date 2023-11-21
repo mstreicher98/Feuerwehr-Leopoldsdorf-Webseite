@@ -40,6 +40,7 @@ import {
   IconMicrophone2,
   IconSun,
   IconMoon,
+  IconCalendarEvent,
 } from "@tabler/icons-react";
 
 import NextImage from "next/image";
@@ -68,6 +69,12 @@ const taetigkeitenData = [
     title: "Jugend",
     description: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr",
     link: "/taetigkeiten/jugend",
+  },
+  {
+    icon: IconCalendarEvent,
+    title: "Termine & Events",
+    description: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr",
+    link: "/taetigkeiten/termine",
   },
   {
     icon: IconArchive,
