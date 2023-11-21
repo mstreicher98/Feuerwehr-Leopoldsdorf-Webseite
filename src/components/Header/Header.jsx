@@ -41,6 +41,7 @@ import {
   IconSun,
   IconMoon,
   IconCalendarEvent,
+  IconNews,
 } from "@tabler/icons-react";
 
 import NextImage from "next/image";
@@ -52,6 +53,12 @@ import classes from "./Header.module.css";
 import Logo from "/public/images/logo.png";
 
 const taetigkeitenData = [
+  {
+    icon: IconNews,
+    title: "Allgemeines",
+    description: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr",
+    link: "/taetigkeiten/allgemeines",
+  },
   {
     icon: IconUrgent,
     title: "Einsätze",

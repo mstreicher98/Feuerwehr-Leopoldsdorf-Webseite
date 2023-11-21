@@ -12,6 +12,7 @@ import {
   CardSection,
 } from '@mantine/core';
 import classes from './MainBeitrag.module.css';
+import NextLink from 'next/link';
 
 export function MainBeitrag() {
   const linkProps = { href: 'https://mantine.dev', target: '_blank', rel: 'noopener noreferrer' };
@@ -19,16 +20,15 @@ export function MainBeitrag() {
   return (
     <Card withBorder radius="md" className={classes.card} pt={0}>
       <CardSection>
-        <a {...linkProps}>
+        <NextLink {...linkProps}>
           <Image src="/images/beitraege/test/test.jpg" height={"auto"} width={100} />
-        </a>
+        </NextLink>
       </CardSection>
 
       <Badge className={classes.rating} variant="gradient" gradient={{ from: 'red.6', to: 'red.9' }}>
         Neu
       </Badge>
-
-      <Text className={classes.title} fw={500} component="a" {...linkProps}>
+      <Text className={classes.title} fw={500} component={NextLink} {...linkProps}>
         Resident Evil Village review
       </Text>
 

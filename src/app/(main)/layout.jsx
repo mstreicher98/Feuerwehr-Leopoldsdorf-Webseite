@@ -15,10 +15,10 @@ export default function RootLayout({ children }) {
           content="1rlxQj4-jGrXnv2P7LL9tyeoeHWXHocT55W0-1Ci-ds"
         ></meta>
         <link rel="icon" href="/images/icon.png" sizes="any" />
-        <ColorSchemeScript />
+        <ColorSchemeScript defaultColorScheme="dark" />
       </head>
       <body>
-        <MantineProvider>
+        <MantineProvider defaultColorScheme="dark">
           <MainLayout>{children}</MainLayout>
         </MantineProvider>
       </body>
