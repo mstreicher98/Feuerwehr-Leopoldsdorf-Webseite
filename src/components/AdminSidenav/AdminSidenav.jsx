@@ -11,12 +11,13 @@ import {
   IconLogout,
   IconHome2,
   IconDeviceDesktopAnalytics,
+  IconLayoutDashboard,
 } from '@tabler/icons-react';
 import classes from './AdminSidenav.module.css';
 
 const data = [
   { link: '', label: 'Startseite', icon: IconHome2 },
-  { link: '', label: 'Dashboard', icon: IconDeviceDesktopAnalytics },
+  { link: '', label: 'Dashboard', icon: IconLayoutDashboard },
   { link: '', label: 'Security', icon: IconFingerprint },
   { link: '', label: 'SSH Keys', icon: IconKey },
   { link: '', label: 'Databases', icon: IconDatabaseImport },
