@@ -1,4 +1,9 @@
+import AdminSidenav from "../AdminSidenav/AdminSidenav";
+
 export default function AdminLayout({ children }) {
-    return <>{children}</>;
+    return <>
+    <AdminSidenav />
+    {children}
+    </>;
   }
   

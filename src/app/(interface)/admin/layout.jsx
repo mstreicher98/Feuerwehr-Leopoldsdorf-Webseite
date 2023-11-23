@@ -1,9 +1,8 @@
 import "@mantine/core/styles.css";
-import "../../style/styles.css";
-
+import "../../../style/styles.css";
 import { MantineProvider, ColorSchemeScript } from "@mantine/core";
+import AdminLayout from "@/components/Layouts/AdminLayout";
 
-import MainLayout from "@/components/Layouts/MainLayout";
 
 export default function RootLayout({ children }) {
   return (
@@ -19,7 +18,7 @@ export default function RootLayout({ children }) {
       </head>
       <body>
         <MantineProvider defaultColorScheme="light">
-          <MainLayout>{children}</MainLayout>
+          <AdminLayout>{children}</AdminLayout>
         </MantineProvider>
       </body>
     </html>
