@@ -3,6 +3,11 @@
 }
 .error {
     font-size: rem(250);
+
+    @media (max-width: $mantine-breakpoint-sm) {
+  
+        font-size: rem(150);
+      }
 }
 .subtext {
     font-size: rem(30);

@@ -5,7 +5,7 @@ import {
   TypographyStylesProvider,
 } from "@mantine/core";
 
-import KommandoCard from "../../../../components/KommandoCard/KommandoCard";
+import KommandoCard from "../../../../components/Kommando/KommandoCard";
 import { KOMMANDO_DATA } from "/public/data/feuerwehr.js";
 
 export const metadata = {

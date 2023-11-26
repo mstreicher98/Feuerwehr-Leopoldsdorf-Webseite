@@ -1,4 +1,5 @@
-import Main from "../../../../components/Main/Main";
+import MannschaftList from "@/components/Mannschaft/MannschaftList";
+import Main from "@/components/Main/Main";
 import { Text, TypographyStylesProvider } from "@mantine/core";
 
 export const metadata = {
@@ -11,10 +12,11 @@ export default function Mannscahft() {
     <Main>
       <Text component="div" ta="center" mb={30}>
         <TypographyStylesProvider pl={0}>
-          <h1>Mannscahft</h1>
+          <h1>Mannschaft</h1>
           <p>Die Mannschaft der Freiwilligen Feuerwehr Leopoldsdorf</p>
         </TypographyStylesProvider>
       </Text>
+      <MannschaftList />
     </Main>
   );
 }
