@@ -220,7 +220,7 @@ export default function Header() {
         <Group justify="space-between" h="100%">
           <NextLink href="/">
             <Image
-              h={50}
+              h={70}
               w="auto"
               fit="contain"
               component={NextImage}
