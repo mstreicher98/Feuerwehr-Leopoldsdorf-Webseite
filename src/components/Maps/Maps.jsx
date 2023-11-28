@@ -7,7 +7,7 @@ import classes from "./Maps.module.css";
 export default function Maps() {
   return (
 
-    <Card shadow="sm" padding="0" radius="md" h={500} withBorder>
+    <Card shadow="sm" padding="0" radius="md" h={750} withBorder>
       <APIProvider apiKey={"AIzaSyBG9eqdJceI1n-Bh9-NZb1UVYcwyDx-OOY"}>
         <Map
           zoom={15}

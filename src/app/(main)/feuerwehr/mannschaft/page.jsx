@@ -1,6 +1,7 @@
 import MannschaftList from "@/components/Mannschaft/MannschaftList";
 import Main from "@/components/Main/Main";
 import { Text, TypographyStylesProvider } from "@mantine/core";
+import { Banner } from "@/components/Banner/Mannschaft/Banner";
 
 export const metadata = {
   title: "Mannschaft | Freiwillige Feuerwehr Leopoldsdorf",
@@ -9,14 +10,11 @@ export const metadata = {
 
 export default function Mannscahft() {
   return (
-    <Main>
-      <Text component="div" ta="center" mb={30}>
-        <TypographyStylesProvider pl={0}>
-          <h1>Mannschaft</h1>
-          <p>Die Mannschaft der Freiwilligen Feuerwehr Leopoldsdorf</p>
-        </TypographyStylesProvider>
-      </Text>
-      <MannschaftList />
-    </Main>
+    <>
+      <Banner />
+      <Main nomargin>
+        <MannschaftList />
+      </Main>
+    </>
   );
 }

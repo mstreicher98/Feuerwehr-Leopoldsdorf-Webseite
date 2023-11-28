@@ -2,14 +2,14 @@
   position: relative;
   padding-top: rem(180px);
   padding-bottom: rem(130px);
-  background-image: url(/images/banner/impressum.jpg);
+  background-image: url(/images/banner/mannschaft.jpg);
   background-size: cover;
   background-position: center;
   margin-top: rem(80px);
   height: 50vh !important;
 
   @media (max-width: $mantine-breakpoint-xs) {
-    padding-top: rem(10px);
+    padding-top: rem(80px);
     padding-bottom: rem(50px);
   }
 }

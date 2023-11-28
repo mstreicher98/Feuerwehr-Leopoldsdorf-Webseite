@@ -2,7 +2,6 @@ import {
     Card,
     Image,
     Text,
-    Badge,
     Center,
     CardSection,
     Title,
@@ -19,7 +18,7 @@ export function MainBeitragSection({section, test}) {
     return (
         <>
             <Divider label={<Title tt="uppercase" className={classes.highlight} size={40} mb={40} mt={40}>
-                {section}
+                Chargen 
             </Title>} />
 
             <SimpleGrid

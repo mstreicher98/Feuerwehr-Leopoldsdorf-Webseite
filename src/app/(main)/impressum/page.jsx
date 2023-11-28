@@ -26,7 +26,7 @@ export default function Impressum() {
       <Banner />
       <Main nomargin>
         <SimpleGrid cols={{ base: 1, md: 2 }} spacing="xl" mt={50} mb={50}>
-          <Card shadow="sm" radius="md" padding="xl">
+          <Card  radius="md" padding="xl">
             <ActionIcon variant="transparent" color="red.7" style={{ width: rem(50), height: rem(50) }}>
               <IconBuilding
                 style={{ width: '100%', height: '100%' }}
@@ -40,7 +40,7 @@ export default function Impressum() {
               Wahrnehmung der Aufgaben im Sinn des NÖFG samt Dienstordnung und Dienstanweisungen des NÖLFV.
             </Text>
           </Card>
-          <Card shadow="sm" radius="md" padding="xl">
+          <Card  radius="md" padding="xl">
             <ActionIcon variant="transparent" color="red.7" style={{ width: rem(50), height: rem(50) }}>
               <IconNews
                 style={{ width: '100%', height: '100%' }}
@@ -54,7 +54,7 @@ export default function Impressum() {
               Elektronisches Informationsmedium über den Aufbau, Organisation, Geschehnisse der Feuerwehren im Bezirk Bruck an der Leitha.
             </Text>
           </Card>
-          <Card shadow="sm" radius="md" padding="xl">
+          <Card  radius="md" padding="xl">
             <ActionIcon variant="transparent" color="red.7" style={{ width: rem(50), height: rem(50) }}>
               <IconCertificate
                 style={{ width: '100%', height: '100%' }}
@@ -69,7 +69,7 @@ export default function Impressum() {
               Kommandant, Mitgliederversammlung.
             </Text>
           </Card>
-          <Card shadow="sm" radius="md" padding="xl">
+          <Card  radius="md" padding="xl">
             <ActionIcon variant="transparent" color="red.7" style={{ width: rem(50), height: rem(50) }}>
               <IconTextCaption
                 style={{ width: '100%', height: '100%' }}
@@ -83,7 +83,7 @@ export default function Impressum() {
               Für den Inhalt ist das Kommando der Freiwilligen Feuerwehr Leopoldsdorf Verantwortlich
             </Text>
           </Card>
-          <Card shadow="sm" radius="md" padding="xl">
+          <Card  radius="md" padding="xl">
             <ActionIcon variant="transparent" color="red.7" style={{ width: rem(50), height: rem(50) }}>
               <IconPhone
                 style={{ width: '100%', height: '100%' }}
@@ -99,7 +99,7 @@ export default function Impressum() {
               E-Mail: <Anchor fz="lg" href="mailto:leopoldsdorf.2333@feuerwehr.gv.at" c={"red.7"}>leopoldsdorf.2333@feuerwehr.gv.at</Anchor>
             </Text>
           </Card>
-          <Card shadow="sm" radius="md" padding="xl">
+          <Card  radius="md" padding="xl">
             <ActionIcon variant="transparent" color="red.7" style={{ width: rem(50), height: rem(50) }}>
               <IconMapPin
                 style={{ width: '100%', height: '100%' }}

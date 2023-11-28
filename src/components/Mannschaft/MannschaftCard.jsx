@@ -2,25 +2,23 @@ import {
   Text,
   Group,
   Divider,
-  Paper,
   Avatar,
   UnstyledButton,
+  Card,
 } from "@mantine/core";
-
+import { server } from  '@/database/connection'
 import classes from "./MannschaftCard.module.css";
 
 export default function MannschaftCard({ mann, ...props }) {
   return (
     <div>
-      <Paper
-        withBorder
+      <Card
         radius="md"
         p="xl"
-        bg="var(--mantine-color-body)"
         {...props}
       >
         <Avatar
-          src={`http://localhost:4000${mann.Profilbild.data.attributes.url}`}
+          src={`${server}${mann.Profilbild.data.attributes.url}`}
           size={"100%"}
           radius={360}
           mx="auto"
@@ -47,10 +45,10 @@ export default function MannschaftCard({ mann, ...props }) {
           </Group>
         </UnstyledButton>
         <Divider my="sm" />
-        <Text ta="center" fz="md" mt="sm" c="red.7">
-          {mann.Funktion}
+        <Text ta="center" fz="sm" mt="sm" c="red.7">
+          {mann.Funktion === "" || mann.Funktion === null ? <br /> : mann.Funktion}
         </Text>
-      </Paper>
+      </Card>
     </div>
   );
 }

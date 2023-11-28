@@ -56,31 +56,31 @@ const taetigkeitenData = [
   {
     icon: IconNews,
     title: "Allgemeines",
-    description: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr",
+    description: "Die allgemeinen Tätigkeiten der Feuerwehr Leopoldsdorf",
     link: "/taetigkeiten/allgemeines",
   },
   {
     icon: IconUrgent,
     title: "Einsätze",
-    description: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr",
+    description: "Die neusten/aktuellsten Einsätze der Feuerwehr Leopoldsdorf",
     link: "/taetigkeiten/einsaetze",
   },
   {
     icon: IconFireHydrant,
     title: "Übungen",
-    description: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr",
+    description: "Die letzten Übungen/Schulungen der Feuerwehr Leopoldsdorf",
     link: "/taetigkeiten/uebungen",
   },
   {
     icon: IconBackpack,
     title: "Jugend",
-    description: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr",
+    description: "Die letzten Tätigkeiten der Feuerwehr Jugend auf eine Blick",
     link: "/taetigkeiten/jugend",
   },
   {
     icon: IconCalendarEvent,
     title: "Termine & Events",
-    description: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr",
+    description: "Alle kommende Termine und Events der Feuerwehr Leopoldsdorf",
     link: "/taetigkeiten/termine",
   },
   {
@@ -215,7 +215,7 @@ export default function Header() {
   const feuerwehrLinks = mapLinks(feuerwehrData);
 
   return (
-    <Box pb={120} className={classes.fixed}>
+    <Box pb={0} className={classes.fixed}>
       <header className={classes.header}>
         <Group justify="space-between" h="100%">
           <NextLink href="/">

@@ -1,5 +1,5 @@
 import MannschaftCard from "./MannschaftCard";
-import { SimpleGrid, Text, TypographyStylesProvider } from "@mantine/core";
+import { Divider, SimpleGrid, Title } from "@mantine/core";
 import axios from "axios";
 
 import { server, token } from "@/database/connection";
@@ -57,60 +57,44 @@ export default async function MannschaftList() {
   });
   return (
     <>
-      <Text component="div" ta="center" mb={30}>
-        <TypographyStylesProvider pl={0}>
-          <h1 className={classes.highlight}>
-            Chargen
-          </h1>
-        </TypographyStylesProvider>
-      </Text>
+        <Divider label={<Title tt="uppercase" className={classes.highlight} size={40} mb={40} mt={40}>
+           Chargen 
+        </Title>} />
       <SimpleGrid
-        cols={{ base: 1, sm: 2, lg: 3 }}
+        cols={{ base: 1, sm: 2, lg: 4 }}
         spacing={{ base: "sm", sm: "sm" }}
         verticalSpacing={{ base: "md", sm: "xl" }}
       >
         {mannschaftChargenListe}
       </SimpleGrid>
 
-      <Text component="div" ta="center" mb={30}>
-        <TypographyStylesProvider pl={0}>
-          <h1 className={classes.highlight}>
-            Mannschaft
-          </h1>
-        </TypographyStylesProvider>
-      </Text>
+      <Divider label={<Title tt="uppercase" className={classes.highlight} size={40} mb={40} mt={40}>
+           Aktiv Mannschaft 
+        </Title>} />
       <SimpleGrid
-        cols={{ base: 1, sm: 2, lg: 3 }}
+        cols={{ base: 1, sm: 2, lg: 4 }}
         spacing={{ base: "sm", sm: "sm" }}
         verticalSpacing={{ base: "md", sm: "xl" }}
       >
         {mannschaftAktivListe}
       </SimpleGrid>
 
-      <Text component="div" ta="center" mb={30}>
-        <TypographyStylesProvider pl={0}>
-          <h1 className={classes.highlight}>
-            Reservisten
-          </h1>
-        </TypographyStylesProvider>
-      </Text>
+      <Divider label={<Title tt="uppercase" className={classes.highlight} size={40} mb={40} mt={40}>
+        Reservisten 
+      </Title>} />
       <SimpleGrid
-        cols={{ base: 1, sm: 2, lg: 3 }}
+        cols={{ base: 1, sm: 2, lg: 4 }}
         spacing={{ base: "sm", sm: "sm" }}
         verticalSpacing={{ base: "md", sm: "xl" }}
       >
         {mannschaftReserveListe}
       </SimpleGrid>
 
-      <Text component="div" ta="center" mb={30}>
-        <TypographyStylesProvider pl={0}>
-          <h1 className={classes.highlight}>
-            Jugend
-          </h1>
-        </TypographyStylesProvider>
-      </Text>
+      <Divider label={<Title tt="uppercase" className={classes.highlight} size={40} mb={40} mt={40}>
+        Jugend 
+      </Title>} />
       <SimpleGrid
-        cols={{ base: 1, sm: 2, lg: 3 }}
+        cols={{ base: 1, sm: 2, lg: 4 }}
         spacing={{ base: "sm", sm: "sm" }}
         verticalSpacing={{ base: "md", sm: "xl" }}
       >

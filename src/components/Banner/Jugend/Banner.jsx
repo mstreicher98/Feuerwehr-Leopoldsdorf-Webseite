@@ -9,10 +9,10 @@ export function Banner() {
         <Center>
           <Box>
             <Title className={classes.title} tt="uppercase" >
-              impressum
+              Jugend
             </Title>
             <Title className={classes.title2} tt="uppercase" >
-              WIR SIND HIER UM ZU HELFEN
+              Unsere Feuerwehr Jugend Unterwegs
             </Title>
           </Box>
         </Center>
@@ -20,4 +20,4 @@ export function Banner() {
       </div>
     </div>
   );
-} 
+}

@@ -6,9 +6,7 @@ import { server, token } from "@/database/connection"
 
 export default async function FahrzeugList() {
   const fahrzeugRes = await axios.get(`${server}/api/fahrzeuges?populate=*&bearer=${token}`);
- 
-  console.log(fahrzeugRes.data.data)
-  const fahrzeugListe = fahrzeugRes.data.data.map((fahrzeug) => {
+   const fahrzeugListe = fahrzeugRes.data.data.map((fahrzeug) => {
     return <FahrzeugCard key={fahrzeug.attributes.Fahrzeug_id} fahrzeug={fahrzeug.attributes} />;
   });
 

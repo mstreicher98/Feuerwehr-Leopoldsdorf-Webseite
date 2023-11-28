@@ -7,9 +7,6 @@ export const metadata = {
   title: "Freiwillige Feuerwehr Leopoldsdorf",
   description:
     "Willkommen auf der Webseite der Freiwilligen Feuerwehr Leopoldsdorf",
-  languages: {
-    'de-DE': '/de-DE',
-  },
   openGraph: {
     images: '/images/logo2-dark.png',
   },

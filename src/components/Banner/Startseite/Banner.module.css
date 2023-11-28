@@ -5,7 +5,7 @@
   background-image: url(/images/banner/startseite.png);
   background-size: cover;
   background-position: center;
-  margin-top: 60px;
+  margin-top: rem(80px);
   height: 50vh !important;
 
   @media (max-width: $mantine-breakpoint-xs) {
@@ -22,7 +22,11 @@
   position: relative;
   height: 50vh !important;
   z-index: 1;
-
+  padding-top: 8vh;
+  
+  @media (max-width: $mantine-breakpoint-md) {
+    padding-top: 15vh;
+  }
 }
 
 .title {

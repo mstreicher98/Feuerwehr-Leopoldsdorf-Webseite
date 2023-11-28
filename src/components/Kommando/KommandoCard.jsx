@@ -14,7 +14,6 @@ export default function KdoPerson({ person, ...props }) {
   return (
     <div>
       <Card
-        withBorder
         radius="md"
         p="xl"
         {...props}

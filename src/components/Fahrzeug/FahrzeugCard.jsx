@@ -1,15 +1,15 @@
 import { Card, Image, Text, Group, Button, CardSection, Divider } from '@mantine/core';
-
+import { server } from  '@/database/connection'
 import classes from "./FahrzeugCard.module.css";
 import NextLink from 'next/link';
 
 export default function Fahrzeug({ fahrzeug, ...props }) {
   return (
     <div>
-      <Card withBorder radius="md" p="md" className={classes.card}>
+      <Card radius="md" p="md">
         <CardSection>
           <Image
-            src={`http://localhost:4000${fahrzeug.Titelbild.data.attributes.url}`}
+            src={`${server}${fahrzeug.Titelbild.data.attributes.url}`}
             alt={fahrzeug.Kurzbezeichnung}
             height="auto"
             width="90%"
