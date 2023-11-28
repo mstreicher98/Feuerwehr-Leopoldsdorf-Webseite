@@ -25,8 +25,8 @@ export default function Kommando() {
 
       <SimpleGrid
         cols={{ base: 1, sm: 3, lg: 3 }}
-        spacing={{ base: "sm", sm: "sm" }}
-        verticalSpacing={{ base: "md", sm: "xl" }}
+        spacing={{ base: "lg", sm: "lg" }}
+        verticalSpacing={{ base: "lg", sm: "xl" }}
       >
         <KommandoCard person={KOMMANDO_DATA.verwaltung} visibleFrom="sm" />
         <KommandoCard person={KOMMANDO_DATA.kommandant} />

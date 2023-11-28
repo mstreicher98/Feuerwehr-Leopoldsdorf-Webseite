@@ -1,0 +1,68 @@
+.wrapper {
+  position: relative;
+  padding-top: rem(180px);
+  padding-bottom: rem(130px);
+  background-image: url(/images/banner/impressum.jpg);
+  background-size: cover;
+  background-position: center;
+  margin-top: 60px;
+  height: 50vh !important;
+
+  @media (max-width: $mantine-breakpoint-xs) {
+    padding-top: rem(80px);
+    padding-bottom: rem(50px);
+  }
+}
+
+.overlay {
+  background-color: light-dark(var(--mantine-color-white), var(--mantine-color-black));
+}
+
+.inner {
+  position: relative;
+  height: 50vh !important;
+  z-index: 1;
+
+}
+
+.title {
+  font-weight: 800;
+  font-size: rem(60px);
+  letter-spacing: rem(-1px);
+  padding-left: var(--mantine-spacing-sm);
+  padding-right: var(--mantine-spacing-sm);
+  color: light-dark(var(--mantine-color-black), var(--mantine-color-white));
+  margin-bottom: var(--mantine-spacing-xs);
+  text-align: center;
+  font-family: Greycliff CF, var(--mantine-font-family);
+
+  @media (max-width: $mantine-breakpoint-md) {
+    font-size: rem(40px);
+  }
+
+  @media (max-width: $mantine-breakpoint-sm) {
+    font-size: var(28px);
+    padding-left: var(10px);
+    padding-right: var(10px);
+  }
+}
+
+.title2 {
+  font-weight: 800;
+  font-size: rem(30px);
+  letter-spacing: rem(-1px);
+  padding-left: var(--mantine-spacing-sm);
+  padding-right: var(--mantine-spacing-sm);
+  color: light-dark(var(--mantine-color-black), var(--mantine-color-white));
+  margin-bottom: var(--mantine-spacing-xs);
+  text-align: center;
+  font-family: Greycliff CF, var(--mantine-font-family);
+
+  @media (max-width: $mantine-breakpoint-md) {
+    font-size: rem(24px);
+  }
+
+  @media (max-width: $mantine-breakpoint-sm) {
+    font-size: rem(18px);
+  }
+}

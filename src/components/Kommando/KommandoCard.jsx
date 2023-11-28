@@ -1,5 +1,6 @@
 import {
   Avatar,
+  Card,
   Divider,
   Group,
   Paper,
@@ -12,11 +13,10 @@ import classes from "./KommandoCard.module.css";
 export default function KdoPerson({ person, ...props }) {
   return (
     <div>
-      <Paper
+      <Card
         withBorder
         radius="md"
         p="xl"
-        bg="var(--mantine-color-body)"
         {...props}
       >
         <Avatar src={person.bild} size={"100%"} radius={360} mx="auto" />
@@ -48,7 +48,7 @@ export default function KdoPerson({ person, ...props }) {
         <Text ta="center" c="dimmed" fz="sm" mt="md">
           {person.beschreibung}
         </Text>
-      </Paper>
+      </Card>
     </div>
   );
 }
