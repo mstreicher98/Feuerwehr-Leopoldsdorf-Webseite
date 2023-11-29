@@ -1,6 +1,6 @@
 import { useDisclosure } from "@mantine/hooks";
 import AdminSidenav from "../AdminSidenav/AdminSidenav";
-import { AppShell, AppShellHeader, AppShellMain, AppShellNavbar, Burger, Group } from "@mantine/core";
+import { AppShell, AppShellHeader, AppShellMain, AppShellNavbar, Burger, Group, Text } from "@mantine/core";
 
 export default function AdminLayout({ children }) {
   const [mobileOpened, { toggle: toggleMobile }] = useDisclosure(false);
@@ -18,6 +18,7 @@ export default function AdminLayout({ children }) {
         <Group h="100%" px="md">
           <Burger opened={mobileOpened} onClick={toggleMobile} hiddenFrom="sm" size="sm" />
           <Burger opened={desktopOpened} onClick={toggleDesktop} visibleFrom="sm" size="sm" />
+          <Text fw={700}>Admin Interface der FF Leopoldsdorf</Text>
         </Group>
       </AppShellHeader>
       <AppShellNavbar>

@@ -40,6 +40,7 @@ export async function MannschaftTable() {
                         />
                         <div style={{ flex: 1 }}>
                             <Text size="sm" pr={10} mt={3} mb={3}>
+                                {mann.attributes.EhrenDG ? "E" : ""}
                                 {mann.attributes.Dienstgrad === "BR2" ? "BR" : mann.attributes.Dienstgrad}
                             </Text>
                         </div>

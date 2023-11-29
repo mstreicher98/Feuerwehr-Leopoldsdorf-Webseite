@@ -39,13 +39,16 @@ export default function MannschaftCard({ mann, ...props }) {
             />
             <div style={{ flex: 1 }}>
               <Text size="sm" pr={10} mt={3} mb={3}>
-                {mann.Dienstgrad === "BR2" ? "BR" : mann.Dienstgrad}
+                {mann.EhrenDG ? "E" : ""}
+                {mann.Dienstgrad === "BR2" ? "BR" : ""}
+                {mann.Dienstgrad === "JFM1" || mann.Dienstgrad === "JFM2" || mann.Dienstgrad === "JFM3" || mann.Dienstgrad === "JFM4" ? "JFM" : ""}
+                {mann.Dienstgrad !== "JFM1" & mann.Dienstgrad !== "JFM2" & mann.Dienstgrad !== "JFM3" & mann.Dienstgrad !== "JFM4" & mann.Dienstgrad !== "BR2" ? mann.Dienstgrad : ""}
               </Text>
             </div>
           </Group>
         </UnstyledButton>
         <Divider my="sm" />
-        <Text ta="center" fz="sm" mt="sm" c="red.7">
+        <Text ta="center" fz="md" fw={700} mt="sm" c="red.7" h={40}>
           {mann.Funktion === "" || mann.Funktion === null ? <br /> : mann.Funktion}
         </Text>
       </Card>

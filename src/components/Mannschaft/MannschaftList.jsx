@@ -33,7 +33,7 @@ export default async function MannschaftList() {
   });
 
   const mannschaftReserveRes = await axios.get(
-    `${server}/api/mannschafts?populate=*&bearer=${token}&filters[Dienststatus][$eq]=Reserve`
+    `${server}/api/mannschafts?populate=*&bearer=${token}&filters[Dienststatus][$eq]=Reserve&filters[Chargen][$eq]=false`
   );
   const mannschaftReserveListe = mannschaftReserveRes.data.data.map((mann) => {
     return (
@@ -57,7 +57,7 @@ export default async function MannschaftList() {
   });
   return (
     <>
-        <Divider label={<Title tt="uppercase" className={classes.highlight} mb={40} mt={40}>
+        <Divider label={<Title tt="uppercase" className={classes.highlight} size={40} mb={40} mt={40}>
            Chargen / Sachbearbeiter
         </Title>} />
       <SimpleGrid
