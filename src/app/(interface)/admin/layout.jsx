@@ -1,6 +1,7 @@
+"use client";
 import "@mantine/core/styles.css";
 import "../../../style/styles.css";
-import { MantineProvider, ColorSchemeScript } from "@mantine/core";
+import { MantineProvider, ColorSchemeScript  } from "@mantine/core";
 import AdminLayout from "@/components/Layouts/AdminLayout";
 
 

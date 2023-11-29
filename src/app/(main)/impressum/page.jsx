@@ -25,7 +25,7 @@ export default function Impressum() {
     <>
       <Banner />
       <Main nomargin>
-        <SimpleGrid cols={{ base: 1, md: 2 }} spacing="xl" mt={50} mb={50}>
+        <SimpleGrid cols={{ base: 1, md: 2, lg: 3 }} spacing="xl" mt={50} mb={50}>
           <Card  radius="md" padding="xl">
             <ActionIcon variant="transparent" color="red.7" style={{ width: rem(50), height: rem(50) }}>
               <IconBuilding

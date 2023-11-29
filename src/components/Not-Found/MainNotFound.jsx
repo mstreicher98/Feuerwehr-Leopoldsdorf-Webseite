@@ -31,7 +31,7 @@ export default function MainNotFound() {
         Leider ist dies nur eine Error 404 Seite. Möglicherweise hast du dich
         vertippt oder
         <br />
-        die Adresse, die Seite wurde auf eine andere URL verschoben.
+        die Adresse / die Seite wurde auf eine andere URL verschoben.
       </Text>
 
       <NextLink href="/">

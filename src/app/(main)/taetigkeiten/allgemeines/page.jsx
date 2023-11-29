@@ -2,7 +2,7 @@ import Main from "@/components/Main/Main";
 
 
 export const metadata = {
-  title: "Einsätze | Freiwillige Feuerwehr Leopoldsdorf",
+  title: "Allgemeines | Freiwillige Feuerwehr Leopoldsdorf",
   description: "Die Letzten Einsätze der Feuerwehr Leopoldsdorf",
 };
 

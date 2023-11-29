@@ -1,6 +1,6 @@
 import { Banner } from "@/components/Banner/Startseite/Banner";
+import { Neu } from "@/components/Beitraege/Neu";
 import Main from "@/components/Main/Main";
-import { MainBeitrag } from "@/components/MainBeitrag/MainBeitrag";
 import { MainBeitragSection } from "@/components/MainBeitragSection/MainBeitragSection";
 
 export const metadata = {
@@ -36,7 +36,7 @@ export default function Startseite() {
     <>
       <Banner />
       <Main nomargin>
-        <MainBeitrag />
+        <Neu />
         <MainBeitragSection section="Einsätze" test={einsatz_data} />
         <MainBeitragSection section="Übungen" test={uebung_data} />
         <MainBeitragSection section="Jugend" test={jugend_data} />
