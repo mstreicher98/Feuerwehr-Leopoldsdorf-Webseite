@@ -1,4 +1,4 @@
-import { Divider, Group, Image } from '@mantine/core';
+import { Burger, Divider, Group, Image } from '@mantine/core';
 import {
   IconSettings,
   IconLogout,
@@ -37,7 +37,7 @@ const admin = [
   { link: '/admin/accounts', label: 'Accounts', icon: IconKey },
 ];
 
-export default function AdminSidenav() {
+export default function AdminSidenav({ mobile, opened }) {
   const allgemeinLinks = allgemein.map((item) => (
     <NextLink
       className={classes.link}
@@ -87,7 +87,8 @@ export default function AdminSidenav() {
     <nav className={classes.navbar}>
       <div className={classes.navbarMain}>
         <Group className={classes.header} justify="space-between">
-            <Image src="/images/logo.png" w={"95%"} />
+            <Image visibleFrom="sm" src="/images/logo.png" w={"95%"} />
+            <Burger opened={opened} onClick={mobile} hiddenFrom="sm" size="sm" />
         </Group>
           {allgemeinLinks}
           <Divider size={"1px"} mt={"md"} mb={"md"} color='red.9' label="Tätigkeiten" labelPosition="center" />

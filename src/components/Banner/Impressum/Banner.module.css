@@ -6,10 +6,10 @@
   background-size: cover;
   background-position: center;
   margin-top: rem(80px);
-  height: 50vh !important;
+  height: 400px !important;
 
   @media (max-width: $mantine-breakpoint-xs) {
-    padding-top: rem(10px);
+    padding-top: rem(80px);
     padding-bottom: rem(50px);
   }
 }
@@ -22,10 +22,9 @@
   position: relative;
   height: 50vh !important;
   z-index: 1;
-  padding-top: 8vh; 
 
   @media (max-width: $mantine-breakpoint-md) {
-    padding-top: 15vh;
+    padding-top: 40px;
   }
 }
 

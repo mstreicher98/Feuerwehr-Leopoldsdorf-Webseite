@@ -57,8 +57,8 @@ export default async function MannschaftList() {
   });
   return (
     <>
-        <Divider label={<Title tt="uppercase" className={classes.highlight} size={40} mb={40} mt={40}>
-           Chargen 
+        <Divider label={<Title tt="uppercase" className={classes.highlight} mb={40} mt={40}>
+           Chargen / Sachbearbeiter
         </Title>} />
       <SimpleGrid
         cols={{ base: 1, sm: 2, lg: 4 }}

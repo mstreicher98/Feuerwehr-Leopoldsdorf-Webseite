@@ -10,7 +10,7 @@
     border-radius: rem(5px);
 }
 .table {
-    height: calc(100vh - 59- 16) !important;
+    height: calc(100vh - var(--mantine-header-height, 0px))
 }
 .thead {
     background: var(--_card-bg);

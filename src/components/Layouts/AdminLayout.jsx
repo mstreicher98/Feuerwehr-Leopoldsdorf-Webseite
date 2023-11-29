@@ -21,9 +21,9 @@ export default function AdminLayout({ children }) {
         </Group>
       </AppShellHeader>
       <AppShellNavbar>
-        <AdminSidenav />
+        <AdminSidenav opened={mobileOpened} mobile={toggleMobile} />
       </AppShellNavbar>
-      <AppShellMain mt={59} pt={16}h={"80vh"}>{children}</AppShellMain>
+      <AppShellMain pb={16} h={100}>{children}</AppShellMain>
     </AppShell>
   );
 }
