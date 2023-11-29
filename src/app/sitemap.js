@@ -1,102 +1,104 @@
+const link = ""
+
 export default function sitemap() {
   return [
     {
-      url: "/",
+      url: link +"/",
       lastModified: new Date(),
       changeFrequency: "daily",
       priority: 1,
     },
 
     {
-      url: "/taetigkeiten/allgemeines",
+      url: link +"/taetigkeiten/allgemeines",
       lastModified: new Date(),
       changeFrequency: "daily",
       priority: 1,
     },
     {
-      url: "/taetigkeiten/einsaetze",
+      url: link +"/taetigkeiten/einsaetze",
       lastModified: new Date(),
       changeFrequency: "daily",
       priority: 1,
     },
     {
-      url: "/taetigkeiten/uebungen",
+      url: link +"/taetigkeiten/uebungen",
       lastModified: new Date(),
       changeFrequency: "daily",
       priority: 1,
     },
     {
-      url: "/taetigkeiten/jugend",
+      url: link +"/taetigkeiten/jugend",
       lastModified: new Date(),
       changeFrequency: "daily",
       priority: 1,
     },
     {
-      url: "/taetigkeiten/archiv",
+      url: link +"/taetigkeiten/archiv",
       lastModified: new Date(),
       changeFrequency: "yearly",
       priority: 0.8,
     },
 
     {
-      url: "/buergerservice/sirenensignale",
+      url: link +"/buergerservice/sirenensignale",
       lastModified: new Date(),
       changeFrequency: "never",
       priority: 0.9,
     },
 
     {
-      url: "/buergerservice/notruf",
+      url: link +"/buergerservice/notruf",
       lastModified: new Date(),
       changeFrequency: "never",
       priority: 0.9,
     },
     {
-      url: "/buergerservice/rettungsgasse",
+      url: link +"/buergerservice/rettungsgasse",
       lastModified: new Date(),
       changeFrequency: "never",
       priority: 0.9,
     },
     {
-      url: "/buergerservice/richtig-loeschen",
+      url: link +"/buergerservice/richtig-loeschen",
       lastModified: new Date(),
       changeFrequency: "never",
       priority: 0.9,
     },
     {
-      url: "/buergerservice/abschnitt-schwechat-land",
+      url: link +"/buergerservice/abschnitt-schwechat-land",
       lastModified: new Date(),
       changeFrequency: "never",
       priority: 0.9,
     },
 
     {
-      url: "/feuerwehr/kommando",
+      url: link +"/feuerwehr/kommando",
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.5,
     },
     {
-      url: "/feuerwehr/mannschaft",
+      url: link +"/feuerwehr/mannschaft",
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.5,
     },
     {
-      url: "/feuerwehr/fuhrpark",
+      url: link +"/feuerwehr/fuhrpark",
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.5,
     },
     {
-      url: "/feuerwehr/ausruestung",
+      url: link +"/feuerwehr/ausruestung",
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.5,
     },
 
     {
-      url: "/impressum",
+      url: link +"/impressum",
       lastModified: new Date(),
       changeFrequency: "yearly",
       priority: 0.8,

@@ -9,8 +9,9 @@ import {
 } from "@mantine/core";
 
 import classes from "./KommandoCard.module.css";
+import { server } from "@/database/connection";
 
-export default function KdoPerson({ person, ...props }) {
+export default function KommandoCard({ person, ...props }) {
   return (
     <div>
       <Card
@@ -18,9 +19,9 @@ export default function KdoPerson({ person, ...props }) {
         p="xl"
         {...props}
       >
-        <Avatar src={person.bild} size={"100%"} radius={360} mx="auto" />
+        <Avatar src={`${server}${person.Profilbild.data.attributes.url}`} size={"100%"} radius={360} mx="auto" />
         <Text ta="center" fz="lg" fw={500} mt="md">
-          {person.nachname} {person.vorname}
+          {person.Nachname} {person.Vorname}
         </Text>
         <UnstyledButton className={classes.dg}>
           <Group
@@ -28,24 +29,24 @@ export default function KdoPerson({ person, ...props }) {
             className={classes.dgtext}
           >
             <Avatar
-              src={`/images/dienstgrade/${person.dienstgrad}.png`}
+              src={`/images/dienstgrade/${person.Dienstgrad}.png`}
               radius="sm"
               size="sm"
-              alt={person.dienstgrad}
+              alt={person.Dienstgrad}
             />
             <div style={{ flex: 1 }}>
               <Text size="sm" pr={10} mt={3} mb={3}>
-                {person.dienstgrad}
+                {person.Dienstgrad}
               </Text>
             </div>
           </Group>
         </UnstyledButton>
         <Divider my="sm" />
         <Text ta="center" fz="md" mt="sm" c="red.7">
-          {person.position}
+          {person.Funktion}
         </Text>
         <Text ta="center" c="dimmed" fz="sm" mt="md">
-          {person.beschreibung}
+          {person.Beschreibung}
         </Text>
       </Card>
     </div>
