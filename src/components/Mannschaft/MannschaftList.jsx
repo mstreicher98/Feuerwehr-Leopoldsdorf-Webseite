@@ -61,7 +61,7 @@ export default async function MannschaftList() {
            Chargen / Sachbearbeiter
         </Title>} />
       <SimpleGrid
-        cols={{ base: 1, sm: 2, lg: 4 }}
+        cols={{ base: 2, sm: 3, lg: 4 }}
         spacing={{ base: "sm", sm: "sm" }}
         verticalSpacing={{ base: "md", sm: "xl" }}
       >
@@ -72,7 +72,7 @@ export default async function MannschaftList() {
            Aktiv Mannschaft 
         </Title>} />
       <SimpleGrid
-        cols={{ base: 1, sm: 2, lg: 4 }}
+        cols={{ base: 2, sm: 3, lg: 5 }}
         spacing={{ base: "sm", sm: "sm" }}
         verticalSpacing={{ base: "md", sm: "xl" }}
       >
@@ -83,7 +83,7 @@ export default async function MannschaftList() {
         Reservisten 
       </Title>} />
       <SimpleGrid
-        cols={{ base: 1, sm: 2, lg: 4 }}
+        cols={{ base: 2, sm: 3, lg: 5 }}
         spacing={{ base: "sm", sm: "sm" }}
         verticalSpacing={{ base: "md", sm: "xl" }}
       >
@@ -94,7 +94,7 @@ export default async function MannschaftList() {
         Jugend 
       </Title>} />
       <SimpleGrid
-        cols={{ base: 1, sm: 2, lg: 4 }}
+        cols={{ base: 2, sm: 3, lg: 5 }}
         spacing={{ base: "sm", sm: "sm" }}
         verticalSpacing={{ base: "md", sm: "xl" }}
       >

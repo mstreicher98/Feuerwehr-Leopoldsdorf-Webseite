@@ -14,11 +14,15 @@ export default function AdminLayout({ children }) {
       navbar={{ width: 300, breakpoint: 'sm', collapsed: { mobile: !mobileOpened, desktop: !desktopOpened }, }}
       padding="md"
     >
-      <AppShellHeader>
+      <AppShellHeader w={"100%"}>
         <Group h="100%" px="md">
           <Burger opened={mobileOpened} onClick={toggleMobile} hiddenFrom="sm" size="sm" />
           <Burger opened={desktopOpened} onClick={toggleDesktop} visibleFrom="sm" size="sm" />
           <Text fw={700}>Admin Interface der FF Leopoldsdorf</Text>
+        </Group>
+
+        <Group justify="center" grow px="md">
+
         </Group>
       </AppShellHeader>
       <AppShellNavbar>

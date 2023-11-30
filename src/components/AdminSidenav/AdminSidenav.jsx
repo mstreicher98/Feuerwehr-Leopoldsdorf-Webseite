@@ -1,4 +1,4 @@
-import { Burger, Divider, Group, Image } from '@mantine/core';
+import { ActionIcon, Burger, Divider, Group, Image, Text, useComputedColorScheme, useMantineColorScheme } from '@mantine/core';
 import {
   IconSettings,
   IconLogout,
@@ -11,7 +11,10 @@ import {
   IconArchive,
   IconKey,
   IconListSearch,
+  IconSun,
+  IconMoon,
 } from '@tabler/icons-react';
+import cx from "clsx";
 import classes from './AdminSidenav.module.css';
 import { IconCalendarEvent } from '@tabler/icons-react';
 import { IconUsers } from '@tabler/icons-react';
@@ -38,6 +41,11 @@ const admin = [
 ];
 
 export default function AdminSidenav({ mobile, opened }) {
+  const { setColorScheme } = useMantineColorScheme();
+  const computedColorScheme = useComputedColorScheme("light", {
+    getInitialValueInEffect: true,
+  });
+
   const allgemeinLinks = allgemein.map((item) => (
     <NextLink
       className={classes.link}
@@ -87,19 +95,48 @@ export default function AdminSidenav({ mobile, opened }) {
     <nav className={classes.navbar}>
       <div className={classes.navbarMain}>
         <Group className={classes.header} justify="space-between">
-            <Image visibleFrom="sm" src="/images/logo.png" w={"95%"} />
-            <Burger opened={opened} onClick={mobile} hiddenFrom="sm" size="sm" />
+          <Image visibleFrom="sm" src="/images/logo.png" w={"95%"} />
+          <Burger opened={opened} onClick={mobile} hiddenFrom="sm" size="sm" />
         </Group>
-          {allgemeinLinks}
-          <Divider size={"1px"} mt={"md"} mb={"md"} color='red.9' label="Tätigkeiten" labelPosition="center" />
-          {taetigkeitenLinks}
-          <Divider size={"1px"} mt={"md"} mb={"md"} color='red.9' label="Die Feuerwehr" labelPosition="center" />
-          {feuerwehrLinks}
-          <Divider size={"1px"} mt={"md"} mb={"md"} color='red.9' label="Admin" labelPosition="center" />
-          {adminLinks}
+        {allgemeinLinks}
+        <Divider size={"1px"} mt={"md"} mb={"md"} color='red.9' label="Tätigkeiten" labelPosition="center" />
+        {taetigkeitenLinks}
+        <Divider size={"1px"} mt={"md"} mb={"md"} color='red.9' label="Die Feuerwehr" labelPosition="center" />
+        {feuerwehrLinks}
+        <Divider size={"1px"} mt={"md"} mb={"md"} color='red.9' label="Admin" labelPosition="center" />
+        {adminLinks}
       </div>
 
       <div className={classes.footer}>
+
+        <Group grow ta="left">
+          <ActionIcon
+            
+            onClick={() =>
+              setColorScheme(
+                computedColorScheme === "light" ? "dark" : "light"
+              )
+            }
+            variant="filled"
+            color="red.7"
+            size="xl"
+            className={cx(classes.sideToggle, classes.link)}
+          >
+            <IconSun
+              className={cx(classes.icon, classes.light)}
+              stroke={1.5}
+            />
+            <Text pl={10} className={classes.light}>Light Mode</Text>
+            <IconMoon
+              className={cx(classes.icon, classes.dark)}
+              stroke={1.5}
+            />
+            <Text pl={10} className={classes.dark}>Dark Mode</Text>
+          </ActionIcon>
+        </Group>
+
+        <Divider size={"1px"} mt={"md"} mb={"md"} color='red.9' />
+
         <NextLink href="/admin/einstellungen" className={classes.link} >
           <IconSettings className={classes.linkIcon} stroke={1.5} />
           <span>Einstellungen</span>

@@ -23,7 +23,10 @@ export default function MannschaftCard({ mann, ...props }) {
           radius={360}
           mx="auto"
         />
-        <Text ta="center" fz="lg" fw={500} mt="md">
+        <Text ta="center" fz="lg" fw={500} mt="md" h={50} visibleFrom="sm">
+          {mann.Nachname} {mann.Vorname}
+        </Text>
+        <Text ta="center" fz="sm" fw={500} mt="md" h={50} hiddenFrom="sm">
           {mann.Nachname} {mann.Vorname}
         </Text>
         <UnstyledButton className={classes.dg}>
@@ -38,7 +41,7 @@ export default function MannschaftCard({ mann, ...props }) {
               alt={mann.Dienstgrad}
             />
             <div style={{ flex: 1 }}>
-              <Text size="sm" pr={10} mt={3} mb={3}>
+              <Text size="md" pr={10} mt={3} mb={3} visibleFrom="sm">
                 {mann.EhrenDG ? "E" : ""}
                 {mann.Dienstgrad === "BR2" ? "BR" : ""}
                 {mann.Dienstgrad === "JFM1" || mann.Dienstgrad === "JFM2" || mann.Dienstgrad === "JFM3" || mann.Dienstgrad === "JFM4" ? "JFM" : ""}
@@ -47,10 +50,19 @@ export default function MannschaftCard({ mann, ...props }) {
             </div>
           </Group>
         </UnstyledButton>
-        <Divider my="sm" />
-        <Text ta="center" fz="md" fw={700} mt="sm" c="red.7" h={40}>
-          {mann.Funktion === "" || mann.Funktion === null ? <br /> : mann.Funktion}
-        </Text>
+        {mann.Chargen ?
+        <>
+          <Divider my="sm" />
+          <Text ta="center" fz="md" mt="sm" c="red.7" mih={50} visibleFrom="sm">
+            {mann.Funktion === "" || mann.Funktion === null ? <br /> : mann.Funktion}
+          </Text>
+          <Text ta="center" fz="xs" mt="sm" c="red.7" mih={50} hiddenFrom="sm">
+            {mann.Funktion === "" || mann.Funktion === null ? <br /> : mann.Funktion}
+          </Text>
+          </>
+        :
+        null
+        }
       </Card>
     </div>
   );

@@ -9,11 +9,10 @@ export function Banner() {
         <Center>
           <Box>
             <Title className={classes.title} tt="uppercase" >
-
-              Übungen
+              Termine & Events
             </Title>
             <Title className={classes.title2} tt="uppercase" >
-              Wir trainieren für den Ernstfall
+              Die kommenden Termine auf einen Blick
             </Title>
           </Box>
         </Center>
