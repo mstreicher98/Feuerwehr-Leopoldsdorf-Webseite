@@ -1,104 +1,177 @@
+"use client";
 import MannschaftCard from "./MannschaftCard";
+import MannschaftLoading from "./MannschaftLoading";
+import ChargenLoading from "./ChargenLoading";
 import { Divider, SimpleGrid, Title } from "@mantine/core";
 import axios from "axios";
 
 import { server, token } from "@/database/connection";
 
 import classes from "./MannschaftList.module.css";
+import { useEffect, useState } from "react";
 
-export default async function MannschaftList() {
-  const mannschaftChargenRes = await axios.get(
-    `${server}/api/mannschafts?populate=*&bearer=${token}&filters[Chargen][$eq]=true`
+export default function MannschaftList() {
+  const [mannschaftChargen, setMannschaftChargen] = useState(
+    <ChargenLoading />
   );
-  const mannschaftChargenListe = mannschaftChargenRes.data.data.map((mann) => {
-    return (
-      <MannschaftCard
-        key={mann.attributes.Standesbuchnummer}
-        mann={mann.attributes}
-      />
-    );
-  });
-
-
-  const mannschaftAktivRes = await axios.get(
-    `${server}/api/mannschafts?populate=*&bearer=${token}&filters[Dienststatus][$eq]=Aktiv&filters[Chargen][$eq]=false`
+  const [mannschaftAktiv, setMannschaftAktiv] = useState(<MannschaftLoading />);
+  const [mannschaftReserve, setMannschaftReserve] = useState(
+    <MannschaftLoading />
   );
-  const mannschaftAktivListe = mannschaftAktivRes.data.data.map((mann) => {
-    return (
-      <MannschaftCard
-        key={mann.attributes.Standesbuchnummer}
-        mann={mann.attributes}
-      />
-    );
-  });
-
-  const mannschaftReserveRes = await axios.get(
-    `${server}/api/mannschafts?populate=*&bearer=${token}&filters[Dienststatus][$eq]=Reserve&filters[Chargen][$eq]=false`
+  const [mannschaftJugend, setMannschaftJugend] = useState(
+    <MannschaftLoading />
   );
-  const mannschaftReserveListe = mannschaftReserveRes.data.data.map((mann) => {
-    return (
-      <MannschaftCard
-        key={mann.attributes.Standesbuchnummer}
-        mann={mann.attributes}
-      />
-    );
-  });
 
-  const mannschaftJugendRes = await axios.get(
-    `${server}/api/mannschafts?populate=*&bearer=${token}&filters[Dienststatus][$eq]=Jugend`
-  );
-  const mannschaftJugendListe = mannschaftJugendRes.data.data.map((mann) => {
-    return (
-      <MannschaftCard
-        key={mann.attributes.Standesbuchnummer}
-        mann={mann.attributes}
-      />
-    );
-  });
+  useEffect(() => {
+    axios
+      .get(
+        `${server}/api/mannschafts?populate=*&bearer=${token}&filters[Chargen][$eq]=true`
+      )
+      .then((res) => {
+        const list = res.data.data.map((mann) => {
+          return (
+            <MannschaftCard
+              key={mann.attributes.Standesbuchnummer}
+              mann={mann.attributes}
+            />
+          );
+        });
+        setMannschaftChargen(list);
+      });
+
+    axios
+      .get(
+        `${server}/api/mannschafts?populate=*&bearer=${token}&filters[Dienststatus][$eq]=Aktiv&filters[Chargen][$eq]=false`
+      )
+      .then((res) => {
+        const list = res.data.data.map((mann) => {
+          return (
+            <MannschaftCard
+              key={mann.attributes.Standesbuchnummer}
+              mann={mann.attributes}
+            />
+          );
+        });
+        setMannschaftAktiv(list);
+      });
+
+    axios
+      .get(
+        `${server}/api/mannschafts?populate=*&bearer=${token}&filters[Dienststatus][$eq]=Reserve&filters[Chargen][$eq]=false`
+      )
+      .then((res) => {
+        const list = res.data.data.map((mann) => {
+          return (
+            <MannschaftCard
+              key={mann.attributes.Standesbuchnummer}
+              mann={mann.attributes}
+            />
+          );
+        });
+        setMannschaftReserve(list);
+      });
+
+    axios
+      .get(
+        `${server}/api/mannschafts?populate=*&bearer=${token}&filters[Dienststatus][$eq]=Jugend`
+      )
+      .then((res) => {
+        const list = res.data.data.map((mann) => {
+          return (
+            <MannschaftCard
+              key={mann.attributes.Standesbuchnummer}
+              mann={mann.attributes}
+            />
+          );
+        });
+        setMannschaftJugend(list);
+      });
+  }, []);
+
   return (
     <>
-        <Divider label={<Title tt="uppercase" className={classes.highlight} size={40} mb={40} mt={40}>
-           Chargen / Sachbearbeiter
-        </Title>} />
+      <Divider
+        label={
+          <Title
+            tt="uppercase"
+            className={classes.highlight}
+            size={40}
+            mb={40}
+            mt={40}
+          >
+            Chargen / Sachbearbeiter
+          </Title>
+        }
+      />
       <SimpleGrid
         cols={{ base: 2, sm: 3, lg: 4 }}
         spacing={{ base: "sm", sm: "sm" }}
         verticalSpacing={{ base: "md", sm: "xl" }}
       >
-        {mannschaftChargenListe}
+        {mannschaftChargen}
       </SimpleGrid>
 
-      <Divider label={<Title tt="uppercase" className={classes.highlight} size={40} mb={40} mt={40}>
-           Aktiv Mannschaft 
-        </Title>} />
+      <Divider
+        label={
+          <Title
+            tt="uppercase"
+            className={classes.highlight}
+            size={40}
+            mb={40}
+            mt={40}
+          >
+            Aktiv Mannschaft
+          </Title>
+        }
+      />
       <SimpleGrid
         cols={{ base: 2, sm: 3, lg: 5 }}
         spacing={{ base: "sm", sm: "sm" }}
         verticalSpacing={{ base: "md", sm: "xl" }}
       >
-        {mannschaftAktivListe}
+        {mannschaftAktiv}
       </SimpleGrid>
 
-      <Divider label={<Title tt="uppercase" className={classes.highlight} size={40} mb={40} mt={40}>
-        Reservisten 
-      </Title>} />
+      <Divider
+        label={
+          <Title
+            tt="uppercase"
+            className={classes.highlight}
+            size={40}
+            mb={40}
+            mt={40}
+          >
+            Reservisten
+          </Title>
+        }
+      />
       <SimpleGrid
         cols={{ base: 2, sm: 3, lg: 5 }}
         spacing={{ base: "sm", sm: "sm" }}
         verticalSpacing={{ base: "md", sm: "xl" }}
       >
-        {mannschaftReserveListe}
+        {mannschaftReserve}
       </SimpleGrid>
 
-      <Divider label={<Title tt="uppercase" className={classes.highlight} size={40} mb={40} mt={40}>
-        Jugend 
-      </Title>} />
+      <Divider
+        label={
+          <Title
+            tt="uppercase"
+            className={classes.highlight}
+            size={40}
+            mb={40}
+            mt={40}
+          >
+            Jugend
+          </Title>
+        }
+      />
       <SimpleGrid
         cols={{ base: 2, sm: 3, lg: 5 }}
         spacing={{ base: "sm", sm: "sm" }}
         verticalSpacing={{ base: "md", sm: "xl" }}
       >
-        {mannschaftJugendListe}
+        {mannschaftJugend}
       </SimpleGrid>
     </>
   );

@@ -1,14 +1,25 @@
+"use client";
 import FahrzeugCard from "./FahrzeugCard";
+import FahrzeugLoading from "./FahrzeugLoading";
 import { SimpleGrid } from "@mantine/core";
 import axios from "axios";
 
 import { server, token } from "@/database/connection"
+import { useEffect, useState } from "react";
 
-export default async function FahrzeugList() {
-  const fahrzeugRes = await axios.get(`${server}/api/fahrzeuges?populate=*&bearer=${token}`);
-   const fahrzeugListe = fahrzeugRes.data.data.map((fahrzeug) => {
-    return <FahrzeugCard key={fahrzeug.attributes.Fahrzeug_id} fahrzeug={fahrzeug.attributes} />;
-  });
+export default function FahrzeugList() {
+  const [data, setData] = useState(<FahrzeugLoading />)
+  
+  useEffect(() => {
+    axios
+      .get(`${server}/api/fahrzeuges?populate=*&bearer=${token}`)
+      .then((fahrzeugRes) => {
+        const list = fahrzeugRes.data.data.map((fahrzeug) => {
+          return <FahrzeugCard key={fahrzeug.attributes.Fahrzeug_id} fahrzeug={fahrzeug.attributes} />;
+        });
+        setData(list);
+      });
+  }, []);
 
   return (
 
@@ -17,7 +28,7 @@ export default async function FahrzeugList() {
         spacing={{ base: "sm", sm: "sm" }}
         verticalSpacing={{ base: "md", sm: "xl" }}
       >
-        {fahrzeugListe}
+        {data}
       </SimpleGrid>
   );
 }
