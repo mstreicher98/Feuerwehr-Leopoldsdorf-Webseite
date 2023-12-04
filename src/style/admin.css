@@ -1,0 +1,9 @@
+.mantine-Card-root {
+  @mixin light {
+    background-color: #f8f9fa !important;
+  }
+}
+
+[data-mantine-color-scheme=dark] .m-6c018570[data-variant=default] {
+  --_input-bd-focus: var(--mantine-color-red-7) !important;
+}

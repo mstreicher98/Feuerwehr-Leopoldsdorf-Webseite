@@ -4,19 +4,8 @@
     margin-right: auto;
     padding: var(--mantine-spacing-md);
     color: light-dark(var(--mantine-color-black), var(--mantine-color-dark-0));
-}
-  
+  }
+
 .dgtext {
     border-radius: rem(5px);
-}
-.table {
-    height: calc(100vh - var(--mantine-header-height, 0px))
-}
-.thead {
-    background: var(--_card-bg);
-    z-index: 100;
-
-    @mixin light {
-        background: #F8F9FA !important;
-      }
 }

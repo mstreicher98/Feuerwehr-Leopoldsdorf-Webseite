@@ -1,34 +1,119 @@
 import { useDisclosure } from "@mantine/hooks";
 import AdminSidenav from "../AdminSidenav/AdminSidenav";
-import { AppShell, AppShellHeader, AppShellMain, AppShellNavbar, Burger, Group, Text } from "@mantine/core";
+import {
+  ActionIcon,
+  AppShell,
+  AppShellHeader,
+  AppShellMain,
+  AppShellNavbar,
+  Burger,
+  Group,
+  Text,
+  useComputedColorScheme,
+  useMantineColorScheme,
+} from "@mantine/core";
+import { usePathname } from "next/navigation";
+import cx from "clsx";
+import classes from "./AdminLayout.module.css";
+import { IconMoon, IconSun } from "@tabler/icons-react";
 
 export default function AdminLayout({ children }) {
   const [mobileOpened, { toggle: toggleMobile }] = useDisclosure(false);
   const [desktopOpened, { toggle: toggleDesktop }] = useDisclosure(true);
+
+  const pathname = usePathname();
+  let Name = "";
+  switch (pathname) {
+    case "/admin/dashboard":
+      Name = "Dashboard";
+      break;
+    case "/admin/beitraege":
+      Name = "Beiträge";
+      break;
+    case "/admin/kommando":
+      Name = "Kommando";
+      break;
+    case "/admin/mannschaft":
+      Name = "Mannschaft";
+      break;
+    case "/admin/fuhrpark":
+      Name = "Fuhrpark";
+      break;
+    case "/admin/ausruestung":
+      Name = "Ausrüstung";
+      break;
+    case "/admin/accounts":
+      Name = "Accounts";
+      break;
+    default:
+      Name = "Admin Interface";
+  }
+
+  const { setColorScheme } = useMantineColorScheme();
+  const computedColorScheme = useComputedColorScheme("dark", {
+    getInitialValueInEffect: true,
+  });
 
   return (
     <AppShell
       layout="alt"
       header={{ height: 60 }}
       footer={{ height: 60 }}
-      navbar={{ width: 300, breakpoint: 'sm', collapsed: { mobile: !mobileOpened, desktop: !desktopOpened }, }}
+      navbar={{
+        width: 300,
+        breakpoint: "sm",
+        collapsed: { mobile: !mobileOpened, desktop: !desktopOpened },
+      }}
       padding="md"
     >
-      <AppShellHeader w={"100%"}>
-        <Group h="100%" px="md">
-          <Burger opened={mobileOpened} onClick={toggleMobile} hiddenFrom="sm" size="sm" />
-          <Burger opened={desktopOpened} onClick={toggleDesktop} visibleFrom="sm" size="sm" />
-          <Text fw={700}>Admin Interface der FF Leopoldsdorf</Text>
+      <AppShellHeader w={"auto"}>
+        <Group h="100%" px="md" justify="space-between">
+          <Group>
+            <Burger
+              opened={mobileOpened}
+              onClick={toggleMobile}
+              hiddenFrom="sm"
+              size="sm"
+            />
+            <Burger
+              opened={desktopOpened}
+              onClick={toggleDesktop}
+              visibleFrom="sm"
+              size="sm"
+            />
+            <Text fw={700} size={"xl"}>{Name}</Text>
+          </Group>
+          <Group ml="xl" gap={0}>
+            <ActionIcon
+              variant="default"
+              onClick={() =>
+                setColorScheme(
+                  computedColorScheme === "light" ? "dark" : "light"
+                )
+              }
+              size="xl"
+              className={cx(classes.sideToggle, classes.link)}
+            >
+              <IconSun
+                className={cx(classes.icon, classes.light)}
+                stroke={1.5}
+              />
+              <IconMoon
+                className={cx(classes.icon, classes.dark)}
+                stroke={1.5}
+              />
+            </ActionIcon>
+          </Group>
         </Group>
 
-        <Group justify="center" grow px="md">
-
-        </Group>
+        <Group justify="center" grow px="md"></Group>
       </AppShellHeader>
       <AppShellNavbar>
         <AdminSidenav opened={mobileOpened} mobile={toggleMobile} />
       </AppShellNavbar>
-      <AppShellMain pb={16} h={100}>{children}</AppShellMain>
+      <AppShellMain pb={16} h={100}>
+        {children}
+      </AppShellMain>
     </AppShell>
   );
 }
