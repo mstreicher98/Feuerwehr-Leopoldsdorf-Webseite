@@ -43,7 +43,7 @@ const statusColors = {
   Jugend: "yellow.6",
 };
 
-export function MannschaftTable() {
+export default function MannschaftTable() {
   const [mannschaftRows, setMannschaftRows] = useState(
     <MannschaftTableLoading />
   );
@@ -61,9 +61,9 @@ export function MannschaftTable() {
               <TableTd>
                 <Group gap="sm">
                   <Avatar
-                    size={30}
+                    size={50}
                     src={`${server}${mann.attributes.Profilbild.data.attributes.url}`}
-                    radius={30}
+                    radius={50}
                   />
                   <Text fz="sm" fw={500}>
                     {mann.attributes.Nachname} {mann.attributes.Vorname}
@@ -166,9 +166,9 @@ export function MannschaftTable() {
               <TableTd>
                 <Group gap="sm">
                   <Avatar
-                    size={30}
+                    size={50}
                     src={`${server}${mann.attributes.Profilbild.data.attributes.url}`}
-                    radius={30}
+                    radius={50}
                   />
                   <Text fz="sm" fw={500}>
                     {mann.attributes.Nachname} {mann.attributes.Vorname}
@@ -216,9 +216,9 @@ export function MannschaftTable() {
                   <TableTd>s
                     <Group gap="sm">
                       <Avatar
-                        size={30}
+                        size={50}
                         src={`${server}${mann.attributes.Profilbild.data.attributes.url}`}
-                        radius={30}
+                        radius={50}
                       />
                       <Text fz="sm" fw={500}>
                         {mann.attributes.Nachname} {mann.attributes.Vorname}
@@ -321,9 +321,9 @@ export function MannschaftTable() {
                   <TableTd>
                     <Group gap="sm">
                       <Avatar
-                        size={30}
+                        size={50}
                         src={`${server}${mann.attributes.Profilbild.data.attributes.url}`}
-                        radius={30}
+                        radius={50}
                       />
                       <Text fz="sm" fw={500}>
                         {mann.attributes.Nachname} {mann.attributes.Vorname}
@@ -375,9 +375,9 @@ export function MannschaftTable() {
                 <TableTd>
                   <Group gap="sm">
                     <Avatar
-                      size={30}
+                      size={50}
                       src={`${server}${mann.attributes.Profilbild.data.attributes.url}`}
-                      radius={30}
+                      radius={50}
                     />
                     <Text fz="sm" fw={500}>
                       {mann.attributes.Nachname} {mann.attributes.Vorname}
@@ -480,9 +480,9 @@ export function MannschaftTable() {
                 <TableTd>
                   <Group gap="sm">
                     <Avatar
-                      size={30}
+                      size={50}
                       src={`${server}${mann.attributes.Profilbild.data.attributes.url}`}
-                      radius={30}
+                      radius={50}
                     />
                     <Text fz="sm" fw={500}>
                       {mann.attributes.Nachname} {mann.attributes.Vorname}
@@ -534,16 +534,15 @@ export function MannschaftTable() {
         mt={16}
         minWidth={800}
         h={10000}
-        ta={"center"}
       >
         <Table stickyHeader highlightOnHover verticalSpacing="sm">
           <TableThead className={classes.thead}>
             <TableTr>
-              <TableTh ta="center">Mitglied</TableTh>
-              <TableTh ta="center">Dienstgrad</TableTh>
-              <TableTh ta="center">Status</TableTh>
-              <TableTh ta="center">Charge</TableTh>
-              <TableTh ta="center">Funktion</TableTh>
+              <TableTh>Mitglied</TableTh>
+              <TableTh>Dienstgrad</TableTh>
+              <TableTh>Status</TableTh>
+              <TableTh>Charge</TableTh>
+              <TableTh>Funktion</TableTh>
               <TableTh />
             </TableTr>
           </TableThead>
@@ -554,7 +553,6 @@ export function MannschaftTable() {
         hiddenFrom="md"
         minWidth={100}
         h={10000}
-        ta={"center"}
       >
         <Table stickyHeader highlightOnHover verticalSpacing="sm">
           <TableThead className={classes.thead}>

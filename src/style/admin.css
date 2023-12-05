@@ -7,3 +7,10 @@
 [data-mantine-color-scheme=dark] .m-6c018570[data-variant=default] {
   --_input-bd-focus: var(--mantine-color-red-7) !important;
 }
+[data-mantine-color-scheme=dark] .m-6c018570[data-variant=filled] {
+  --_input-bd-focus: var(--mantine-color-red-7) !important;
+}
+.MannschaftNeu_root__1I3_Y[data-checked] {
+  background-color: var(--mantine-color-red-filled) !important;
+  border-color: var(--mantine-color-red-filled) !important;
+}

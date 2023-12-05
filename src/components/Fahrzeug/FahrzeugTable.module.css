@@ -1,6 +1,6 @@
 .dg {
     display: block;
-    margin-left: 0;
+    margin-left: auto;
     margin-right: auto;
     padding: var(--mantine-spacing-md);
     color: light-dark(var(--mantine-color-black), var(--mantine-color-dark-0));
