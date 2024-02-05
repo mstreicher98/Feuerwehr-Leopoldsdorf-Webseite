@@ -2,7 +2,7 @@
 import MannschaftCard from "./MannschaftCard";
 import MannschaftLoading from "./MannschaftLoading";
 import ChargenLoading from "./ChargenLoading";
-import { Divider, SimpleGrid, Title } from "@mantine/core";
+import { Divider, Grid, SimpleGrid, Title } from "@mantine/core";
 import axios from "axios";
 
 import { server, token } from "@/database/connection";
@@ -33,6 +33,11 @@ export default function MannschaftList() {
             <MannschaftCard
               key={mann.attributes.Standesbuchnummer}
               mann={mann.attributes}
+              xl={3}
+              lg={3}
+              md={4}
+              sm={6}
+              xs={12}
             />
           );
         });
@@ -49,6 +54,11 @@ export default function MannschaftList() {
             <MannschaftCard
               key={mann.attributes.Standesbuchnummer}
               mann={mann.attributes}
+              xl={2.4}
+              lg={2.4}
+              md={3}
+              sm={4}
+              sx={6}
             />
           );
         });
@@ -65,6 +75,11 @@ export default function MannschaftList() {
             <MannschaftCard
               key={mann.attributes.Standesbuchnummer}
               mann={mann.attributes}
+              xl={2.4}
+              lg={2.4}
+              md={3}
+              sm={4}
+              xs={6}
             />
           );
         });
@@ -81,6 +96,11 @@ export default function MannschaftList() {
             <MannschaftCard
               key={mann.attributes.Standesbuchnummer}
               mann={mann.attributes}
+              xl={2.4}
+              lg={2.4}
+              md={3}
+              sm={4}
+              xs={6}
             />
           );
         });
@@ -103,13 +123,9 @@ export default function MannschaftList() {
           </Title>
         }
       />
-      <SimpleGrid
-        cols={{ base: 2, sm: 3, lg: 4 }}
-        spacing={{ base: "sm", sm: "sm" }}
-        verticalSpacing={{ base: "md", sm: "xl" }}
-      >
+      <Grid justify="center" align="stretch">
         {mannschaftChargen}
-      </SimpleGrid>
+      </Grid>
 
       <Divider
         label={
@@ -124,13 +140,9 @@ export default function MannschaftList() {
           </Title>
         }
       />
-      <SimpleGrid
-        cols={{ base: 2, sm: 3, lg: 5 }}
-        spacing={{ base: "sm", sm: "sm" }}
-        verticalSpacing={{ base: "md", sm: "xl" }}
-      >
+      <Grid justify="center" align="stretch">
         {mannschaftAktiv}
-      </SimpleGrid>
+      </Grid>
 
       <Divider
         label={
@@ -145,13 +157,9 @@ export default function MannschaftList() {
           </Title>
         }
       />
-      <SimpleGrid
-        cols={{ base: 2, sm: 3, lg: 5 }}
-        spacing={{ base: "sm", sm: "sm" }}
-        verticalSpacing={{ base: "md", sm: "xl" }}
-      >
+      <Grid justify="center" align="stretch">
         {mannschaftReserve}
-      </SimpleGrid>
+      </Grid>
 
       <Divider
         label={
@@ -166,13 +174,9 @@ export default function MannschaftList() {
           </Title>
         }
       />
-      <SimpleGrid
-        cols={{ base: 2, sm: 3, lg: 5 }}
-        spacing={{ base: "sm", sm: "sm" }}
-        verticalSpacing={{ base: "md", sm: "xl" }}
-      >
+      <Grid justify="center" align="stretch">
         {mannschaftJugend}
-      </SimpleGrid>
+      </Grid>
     </>
   );
 }

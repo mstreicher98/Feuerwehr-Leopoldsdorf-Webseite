@@ -53,7 +53,9 @@ export default function MannschaftTable() {
 
   useEffect(() => {
     axios
-      .get(`${server}/api/mannschafts?populate=*&bearer=${token}&sort[0]=Nachname&sort[1]=Vorname`)
+      .get(
+        `${server}/api/mannschafts?populate=*&bearer=${token}&sort[0]=Nachname&sort[1]=Vorname`
+      )
       .then((res) => {
         const list = res.data.data.map((mann) => {
           return (
@@ -213,7 +215,8 @@ export default function MannschaftTable() {
             const list = res.data.data.map((mann) => {
               return (
                 <TableTr key={mann.attributes.Standesbuchnummer}>
-                  <TableTd>s
+                  <TableTd>
+                    s
                     <Group gap="sm">
                       <Avatar
                         size={50}
@@ -367,7 +370,9 @@ export default function MannschaftTable() {
         });
     } else {
       axios
-        .get(`${server}/api/mannschafts?populate=*&bearer=${token}&sort[0]=Nachname&sort[1]=Vorname`)
+        .get(
+          `${server}/api/mannschafts?populate=*&bearer=${token}&sort[0]=Nachname&sort[1]=Vorname`
+        )
         .then((res) => {
           const list = res.data.data.map((mann) => {
             return (
@@ -529,12 +534,7 @@ export default function MannschaftTable() {
           />
         }
       />
-      <TableScrollContainer
-        visibleFrom="md"
-        mt={16}
-        minWidth={800}
-        h={10000}
-      >
+      <TableScrollContainer visibleFrom="md" mt={16} minWidth={800} h={10000}>
         <Table stickyHeader highlightOnHover verticalSpacing="sm">
           <TableThead className={classes.thead}>
             <TableTr>
@@ -546,14 +546,15 @@ export default function MannschaftTable() {
               <TableTh />
             </TableTr>
           </TableThead>
-          <TableTbody>{mannschaftRows}</TableTbody>
+          <TableTbody>
+            {mannschaftRows}
+            <TableTr>
+              <TableTd colSpan={6} h={60}></TableTd>
+            </TableTr>
+          </TableTbody>
         </Table>
       </TableScrollContainer>
-      <TableScrollContainer
-        hiddenFrom="md"
-        minWidth={100}
-        h={10000}
-      >
+      <TableScrollContainer hiddenFrom="md" minWidth={100} h={10000}>
         <Table stickyHeader highlightOnHover verticalSpacing="sm">
           <TableThead className={classes.thead}>
             <TableTr>
@@ -561,7 +562,12 @@ export default function MannschaftTable() {
               <TableTh />
             </TableTr>
           </TableThead>
-          <TableTbody>{mannschaftSMRows}</TableTbody>
+          <TableTbody>
+            {mannschaftSMRows}
+            <TableTr>
+              <TableTd colSpan={2} h={60}></TableTd>
+            </TableTr>
+          </TableTbody>
         </Table>
       </TableScrollContainer>
     </Card>

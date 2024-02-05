@@ -30,11 +30,23 @@ export default function AdminLayout({ children }) {
     case "/admin/beitraege":
       Name = "Beiträge";
       break;
+    case "/admin/termine":
+      Name = "Termine & Events";
+      break;
+    case "/admin/beitraege":
+      Name = "Beiträge";
+      break;    
+      case "/admin/beitraege/neu":
+      Name = "Neuen Beitrag erstellen";
+      break;
     case "/admin/kommando":
       Name = "Kommando";
       break;
     case "/admin/mannschaft":
       Name = "Mannschaft";
+      break;
+    case "/admin/mannschaft/neu":
+      Name = "Neues Mitglied hinzufügen";
       break;
     case "/admin/fuhrpark":
       Name = "Fuhrpark";
@@ -43,7 +55,10 @@ export default function AdminLayout({ children }) {
       Name = "Ausrüstung";
       break;
     case "/admin/accounts":
-      Name = "Accounts";
+      Name = "Admin Accounts";
+      break;
+    case "/admin/einstellungen":
+      Name = "Einstellungen";
       break;
     default:
       Name = "Admin Interface";
@@ -81,7 +96,9 @@ export default function AdminLayout({ children }) {
               visibleFrom="sm"
               size="sm"
             />
-            <Text fw={700} size={"xl"}>{Name}</Text>
+            <Text fw={700} size={"xl"}>
+              {Name}
+            </Text>
           </Group>
           <Group ml="xl" gap={0}>
             <ActionIcon

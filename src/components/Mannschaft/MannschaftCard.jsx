@@ -5,13 +5,14 @@ import {
   Avatar,
   UnstyledButton,
   Card,
+  GridCol,
 } from "@mantine/core";
 import { server } from  '@/database/connection'
 import classes from "./MannschaftCard.module.css";
 
-export default function MannschaftCard({ mann, ...props }) {
+export default function MannschaftCard({ mann, xl, lg, md, sm, xs, ...props }) {
   return (
-    <div>
+    <GridCol span={{xs, sm, md, lg, xl}}>
       <Card
         radius="md"
         p="xl"
@@ -41,7 +42,7 @@ export default function MannschaftCard({ mann, ...props }) {
               alt={mann.Dienstgrad}
             />
             <div style={{ flex: 1 }}>
-              <Text size="md" pr={10} mt={3} mb={3} visibleFrom="sm">
+              <Text size="md" pr={10} mt={3} mb={3}>
                 {mann.EhrenDG ? "E" : ""}
                 {mann.Dienstgrad === "BR2" ? "BR" : ""}
                 {mann.Dienstgrad === "JFM1" || mann.Dienstgrad === "JFM2" || mann.Dienstgrad === "JFM3" || mann.Dienstgrad === "JFM4" ? "JFM" : ""}
@@ -64,6 +65,6 @@ export default function MannschaftCard({ mann, ...props }) {
         null
         }
       </Card>
-    </div>
+    </GridCol>
   );
 }
