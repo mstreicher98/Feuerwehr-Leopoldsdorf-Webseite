@@ -41,7 +41,8 @@
     "next": "14.0.3",
     "next-cookies": "^2.0.3",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "react-html-parser": "^2.0.2"
   },
   "devDependencies": {
     "eslint": "^8",

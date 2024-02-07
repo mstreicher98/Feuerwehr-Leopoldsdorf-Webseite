@@ -17,3 +17,8 @@
       display: block;
     }
   }
+  .titletext {
+    @media (max-width: $mantine-breakpoint-sm) {
+      font-size: medium;
+    }
+  }

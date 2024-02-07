@@ -96,7 +96,7 @@ export default function AdminLayout({ children }) {
               visibleFrom="sm"
               size="sm"
             />
-            <Text fw={700} size={"xl"}>
+            <Text fw={700} size={"xl"} className={classes.titletext}>
               {Name}
             </Text>
           </Group>
