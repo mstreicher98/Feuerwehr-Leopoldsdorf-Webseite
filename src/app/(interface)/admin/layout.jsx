@@ -1,11 +1,12 @@
 "use client";
 import "@mantine/core/styles.css";
-import '@mantine/tiptap/styles.css';
-import "../../../style/admin.css"
-
-import { MantineProvider, ColorSchemeScript  } from "@mantine/core";
+import "@mantine/tiptap/styles.css";
+import "@mantine/dates/styles.css";
+import "@mantine/notifications/styles.css";
+import "../../../style/admin.css";
+import { MantineProvider, ColorSchemeScript } from "@mantine/core";
 import AdminLayout from "@/components/Layouts/AdminLayout";
-
+import { Notifications } from "@mantine/notifications";
 
 export default function RootLayout({ children }) {
   return (
@@ -21,6 +22,7 @@ export default function RootLayout({ children }) {
       </head>
       <body>
         <MantineProvider defaultColorScheme="light">
+          <Notifications position="top-right" />
           <AdminLayout>{children}</AdminLayout>
         </MantineProvider>
       </body>

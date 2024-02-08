@@ -4,13 +4,31 @@
   }
 }
 
-[data-mantine-color-scheme=dark] .m-6c018570[data-variant=default] {
+.m-6c018570[data-variant=default] {
   --_input-bd-focus: var(--mantine-color-red-7) !important;
 }
-[data-mantine-color-scheme=dark] .m-6c018570[data-variant=filled] {
+.m-6c018570[data-variant=filled] {
   --_input-bd-focus: var(--mantine-color-red-7) !important;
 }
 .MannschaftNeu_root__1I3_Y[data-checked] {
   background-color: var(--mantine-color-red-filled) !important;
   border-color: var(--mantine-color-red-filled) !important;
+}
+
+.m-396ce5cb[data-selected] {
+  --_day-bg: var(--mantine-color-red-filled) !important;
+}
+.mantine-Calendar-levelsGroup {
+  justify-content: center !important;
+}
+.mantine-Calendar-levelsGroup > div {
+  background-color: light-dark(var(--mantine-color-white), var(--mantine-color-dark-7)) !important;
+  border-radius: var(--mantine-radius-default) !important;
+  border: calc(0.0625rem*var(--mantine-scale)) solid light-dark(var(--mantine-color-gray-4), var(--mantine-color-dark-4)) !important;
+}
+
+.mantine-Dropzone-root {
+  background-color: light-dark(var(--mantine-color-white), var(--mantine-color-dark-7)) !important;
+  border-radius: var(--mantine-radius-default) !important;
+  border: calc(0.0625rem*var(--mantine-scale)) solid light-dark(var(--mantine-color-gray-4), var(--mantine-color-dark-4)) !important;
 }

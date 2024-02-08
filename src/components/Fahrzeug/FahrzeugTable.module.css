@@ -13,10 +13,6 @@
     height: calc(100vh - var(--mantine-header-height, 0px))
 }
 .thead {
-    background: var(--_card-bg);
+    background-color: light-dark(#f8f9fa, var(--mantine-color-dark-6)) !important;
     z-index: 100;
-
-    @mixin light {
-        background: #F8F9FA !important;
-      }
 }
