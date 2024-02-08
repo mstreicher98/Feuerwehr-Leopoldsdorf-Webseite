@@ -104,7 +104,7 @@ export default function BeitraegeNeuerBeitrag() {
   return (
     <Card h={"100%"} mah={"100%"}>
       {isMobile ? (
-        <ScrollArea h={"100%"}>
+        <ScrollArea h={"100%"} type="scroll">
           <InputWrapper mb={16}>
             <Input
               size="lg"
