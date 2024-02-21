@@ -1,6 +1,5 @@
 "use client";
 import { useEffect, useState } from "react";
-import ReactHtmlParser from "react-html-parser";
 import {
   Box,
   Card,
