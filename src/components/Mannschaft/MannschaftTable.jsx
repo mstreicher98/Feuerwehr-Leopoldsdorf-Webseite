@@ -38,7 +38,6 @@ import classes from "./MannschaftTable.module.css";
 import { useEffect, useState } from "react";
 import { modals } from "@mantine/modals";
 import { notifications } from "@mantine/notifications";
-import { setupDevBundler } from "next/dist/server/lib/router-utils/setup-dev-bundler";
 
 const statusColors = {
   Aktiv: "lime.5",
@@ -75,13 +74,7 @@ export default function MannschaftTable() {
     axios
       .delete(`${server}/api/mannschafts/${id}?bearer=${token}`)
       .then((res) => {
-        setMannschaftRows(<MannschaftTableLoading />);
-        setMannschaftSMRows(<MannschaftTableLoadingSM />);
-
-        
-
-
-
+        renderList();
         notifications.show({
           title: `Erfolgreich gelöscht`,
           message: 'Das Mitglied wurde erfolgreich gelöscht.',
@@ -95,170 +88,175 @@ export default function MannschaftTable() {
           color: 'red',
           withCloseButton: true,
         });
+      
       });
   };
 
-  useEffect(() => {
+  const renderList = () => {
     axios
-      .get(
-        `${server}/api/mannschafts?populate=*&bearer=${token}&sort[0]=Nachname&sort[1]=Vorname`
-      )
-      .then((res) => {
-        const list = res.data.data.map((mann) => {
-          console.log(mann);
-          return (
-            <TableTr key={mann.attributes.Standesbuchnummer}>
-              <TableTd>
-                <Group gap="sm">
-                  <Avatar
-                    size={50}
-                    src={`${server}${mann.attributes.Profilbild.data.attributes.url}`}
-                    radius={50}
-                  />
-                  <Text fz="sm" fw={500}>
-                    {mann.attributes.Nachname} {mann.attributes.Vorname}
-                  </Text>
-                </Group>
-              </TableTd>
-
-              <TableTd>
-                <UnstyledButton className={classes.dg}>
-                  <Group
-                    bg="var(--mantine-color-gray-light)"
-                    className={classes.dgtext}
-                  >
-                    <Avatar
-                      src={`/images/dienstgrade/${mann.attributes.Dienstgrad}.png`}
-                      radius="sm"
-                      size="sm"
-                      alt={mann.attributes.Dienstgrad}
-                    />
-                    <div style={{ flex: 1 }}>
-                      <Text size="sm" pr={10} mt={3} mb={3}>
-                        {mann.attributes.EhrenDG ? "E" : ""}
-                        {mann.attributes.Dienstgrad === "BR2"
-                          ? "BR"
-                          : mann.attributes.Dienstgrad}
-                      </Text>
-                    </div>
-                  </Group>
-                </UnstyledButton>
-              </TableTd>
-
-              <TableTd>
-                <Badge
-                  color={statusColors[mann.attributes.Dienststatus]}
-                  variant="light"
-                >
-                  {mann.attributes.Dienststatus}
-                </Badge>
-              </TableTd>
-
-              <TableTd>
-                {mann.attributes.Chargen === true ? (
-                  <ActionIcon
-                    variant="transparent"
-                    color="lime"
-                    aria-label="Settings"
-                  >
-                    <IconCheck
-                      style={{ width: "70%", height: "70%" }}
-                      stroke={1.5}
-                    />
-                  </ActionIcon>
-                ) : (
-                  <ActionIcon
-                    variant="transparent"
-                    color="red.7"
-                    aria-label="Settings"
-                  >
-                    <IconX
-                      style={{ width: "70%", height: "70%" }}
-                      stroke={1.5}
-                    />
-                  </ActionIcon>
-                )}
-              </TableTd>
-
-              <TableTd>
-                <Text fz="sm" mt="sm" c="red.7">
-                  {mann.attributes.Funktion === "" ||
-                  mann.attributes.Funktion === null
-                    ? " "
-                    : mann.attributes.Funktion}
+    .get(
+      `${server}/api/mannschafts?populate=*&bearer=${token}&sort[0]=Nachname&sort[1]=Vorname`
+    )
+    .then((res) => {
+      const list = res.data.data.map((mann) => {
+        console.log(mann);
+        return (
+          <TableTr key={mann.attributes.Standesbuchnummer}>
+            <TableTd>
+              <Group gap="sm">
+                <Avatar
+                  size={50}
+                  src={`${server}${mann.attributes.Profilbild.data.attributes.url}`}
+                  radius={50}
+                />
+                <Text fz="sm" fw={500}>
+                  {mann.attributes.Nachname} {mann.attributes.Vorname}
                 </Text>
-              </TableTd>
+              </Group>
+            </TableTd>
 
-              <TableTd>
-                <Group gap={10} justify="flex-end">
-                  <ActionIcon variant="subtle" size={"md"} color="gray">
-                    <IconPencil
-                      style={{ width: "90%", height: "90%" }}
-                      stroke={1.5}
-                    />
-                  </ActionIcon>
-                  <ActionIcon
-                    variant="subtle"
-                    color="red"
-                    onClick={() =>
-                      openDeleteModal(mann)
-                    }
-                  >
-                    <IconTrash
-                      style={{ width: "90%", height: "90%" }}
-                      stroke={1.5}
-                    />
-                  </ActionIcon>
-                </Group>
-              </TableTd>
-            </TableTr>
-          );
-        });
-        setMannschaftRows(list);
-
-        const list2 = res.data.data.map((mann) => {
-          return (
-            <TableTr key={mann.attributes.Standesbuchnummer}>
-              <TableTd>
-                <Group gap="sm">
+            <TableTd>
+              <UnstyledButton className={classes.dg}>
+                <Group
+                  bg="var(--mantine-color-gray-light)"
+                  className={classes.dgtext}
+                >
                   <Avatar
-                    size={50}
-                    src={`${server}${mann.attributes.Profilbild.data.attributes.url}`}
-                    radius={50}
+                    src={`/images/dienstgrade/${mann.attributes.Dienstgrad}.png`}
+                    radius="sm"
+                    size="sm"
+                    alt={mann.attributes.Dienstgrad}
                   />
-                  <Text fz="sm" fw={500}>
-                    {mann.attributes.Nachname} {mann.attributes.Vorname}
-                  </Text>
+                  <div style={{ flex: 1 }}>
+                    <Text size="sm" pr={10} mt={3} mb={3}>
+                      {mann.attributes.EhrenDG ? "E" : ""}
+                      {mann.attributes.Dienstgrad === "BR2"
+                        ? "BR"
+                        : mann.attributes.Dienstgrad}
+                    </Text>
+                  </div>
                 </Group>
-              </TableTd>
-              <TableTd>
-                <Group gap={10} justify="flex-end">
-                  <ActionIcon variant="subtle" size={"md"} color="gray">
-                    <IconPencil
-                      style={{ width: "90%", height: "90%" }}
-                      stroke={1.5}
-                    />
-                  </ActionIcon>
-                  <ActionIcon
-                    variant="subtle"
-                    color="red"
-                    onClick={() =>
-                      openDeleteModal(mann)
-                    }
-                  >
-                    <IconTrash
-                      style={{ width: "90%", height: "90%" }}
-                      stroke={1.5}
-                    />
-                  </ActionIcon>
-                </Group>
-              </TableTd>
-            </TableTr>
-          );
-        });
+              </UnstyledButton>
+            </TableTd>
 
-        setMannschaftSMRows(list2);
+            <TableTd>
+              <Badge
+                color={statusColors[mann.attributes.Dienststatus]}
+                variant="light"
+              >
+                {mann.attributes.Dienststatus}
+              </Badge>
+            </TableTd>
+
+            <TableTd>
+              {mann.attributes.Chargen === true ? (
+                <ActionIcon
+                  variant="transparent"
+                  color="lime"
+                  aria-label="Settings"
+                >
+                  <IconCheck
+                    style={{ width: "70%", height: "70%" }}
+                    stroke={1.5}
+                  />
+                </ActionIcon>
+              ) : (
+                <ActionIcon
+                  variant="transparent"
+                  color="red.7"
+                  aria-label="Settings"
+                >
+                  <IconX
+                    style={{ width: "70%", height: "70%" }}
+                    stroke={1.5}
+                  />
+                </ActionIcon>
+              )}
+            </TableTd>
+
+            <TableTd>
+              <Text fz="sm" mt="sm" c="red.7">
+                {mann.attributes.Funktion === "" ||
+                mann.attributes.Funktion === null
+                  ? " "
+                  : mann.attributes.Funktion}
+              </Text>
+            </TableTd>
+
+            <TableTd>
+              <Group gap={10} justify="flex-end">
+                <ActionIcon variant="subtle" size={"md"} color="gray">
+                  <IconPencil
+                    style={{ width: "90%", height: "90%" }}
+                    stroke={1.5}
+                  />
+                </ActionIcon>
+                <ActionIcon
+                  variant="subtle"
+                  color="red"
+                  onClick={() =>
+                    openDeleteModal(mann)
+                  }
+                >
+                  <IconTrash
+                    style={{ width: "90%", height: "90%" }}
+                    stroke={1.5}
+                  />
+                </ActionIcon>
+              </Group>
+            </TableTd>
+          </TableTr>
+        );
       });
+      setMannschaftRows(list);
+
+      const list2 = res.data.data.map((mann) => {
+        return (
+          <TableTr key={mann.attributes.Standesbuchnummer}>
+            <TableTd>
+              <Group gap="sm">
+                <Avatar
+                  size={50}
+                  src={`${server}${mann.attributes.Profilbild.data.attributes.url}`}
+                  radius={50}
+                />
+                <Text fz="sm" fw={500}>
+                  {mann.attributes.Nachname} {mann.attributes.Vorname}
+                </Text>
+              </Group>
+            </TableTd>
+            <TableTd>
+              <Group gap={10} justify="flex-end">
+                <ActionIcon variant="subtle" size={"md"} color="gray">
+                  <IconPencil
+                    style={{ width: "90%", height: "90%" }}
+                    stroke={1.5}
+                  />
+                </ActionIcon>
+                <ActionIcon
+                  variant="subtle"
+                  color="red"
+                  onClick={() =>
+                    openDeleteModal(mann)
+                  }
+                >
+                  <IconTrash
+                    style={{ width: "90%", height: "90%" }}
+                    stroke={1.5}
+                  />
+                </ActionIcon>
+              </Group>
+            </TableTd>
+          </TableTr>
+        );
+      });
+
+      setMannschaftSMRows(list2);
+    });
+  }
+
+  useEffect(() => {
+    renderList();
   }, []);
 
   function handleSearch(event) {

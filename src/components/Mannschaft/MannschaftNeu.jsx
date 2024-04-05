@@ -4,6 +4,7 @@ import {
   Button,
   Card,
   Checkbox,
+  CloseButton,
   Group,
   Image,
   InputWrapper,
@@ -11,6 +12,7 @@ import {
   MenuDropdown,
   MenuItem,
   MenuTarget,
+  Paper,
   ScrollArea,
   SimpleGrid,
   Text,
@@ -24,6 +26,8 @@ import {
   IconChevronDown,
   IconCloudUpload,
   IconDownload,
+  IconPhoto,
+  IconUpload,
   IconX,
 } from "@tabler/icons-react";
 import classes from "./MannschaftNeu.module.css";
@@ -33,7 +37,7 @@ import {
   DropzoneAccept,
   DropzoneIdle,
   DropzoneReject,
-  MIME_TYPES,
+  IMAGE_MIME_TYPE,
 } from "@mantine/dropzone";
 
 const dataDg = [
@@ -160,9 +164,31 @@ export default function MannschaftNeu() {
   const [valueDg, setValueDg] = useState("PFM");
   const [ehrenDg, setEhrenDg] = useState(false);
   const [funktion, setFunktion] = useState("");
+  const [titleImg, setTitleImg] = useState(null);
 
   const [openedDg, setOpenedDg] = useState(false);
   const [selectedDg, setSelectedDg] = useState(dataDg[5]);
+
+  const handleFileDrop = (files) => {
+    if (files.length > 0 && files.length < 2) {
+      setTitleImg(files[0]);
+    } else {
+      notifications.show({
+        id: "title-image-error",
+        withCloseButton: true,
+        withBorder: true,
+        autoClose: 10000,
+        title: "Zu viele Bilder ausgewählt!",
+        message: "Du kannst nur ein Bild als Titelbild auswählen!",
+        color: "red",
+        loading: false,
+      });
+    }
+  };
+
+  const handleImageDelete = () => {
+    setTitleImg(null);
+  };
 
   const dg = dataDg.map((item) => (
     <MenuItem
@@ -179,145 +205,149 @@ export default function MannschaftNeu() {
   ));
   return (
     <>
-      <Card mih={"100%"} mah={"100%"}>
-        <Title order={3} ta={"center"}>
-          Neues Miglied hinzufügen
-        </Title>
-        <SimpleGrid mt={16} cols={1}>
-          <div>
-            <InputWrapper size="md" label="Standesbuchnummer">
-              <TextInput variant="filled" placeholder="123" h={46} />
-            </InputWrapper>
-          </div>
-        </SimpleGrid>
-        <SimpleGrid mt={16} cols={2}>
-          <div>
-            <InputWrapper size="md" label="Vorname">
-              <TextInput variant="filled" placeholder="Maximillian" h={46} />
-            </InputWrapper>
-          </div>
-          <div>
-            <InputWrapper size="md" label="Nachname">
-              <TextInput variant="filled" placeholder="Mustermann" h={46} />
-            </InputWrapper>
-          </div>
-        </SimpleGrid>
-
-        <SimpleGrid mt={16} cols={2}>
-          <div>
-            <InputWrapper size="md" label="Dienstgrad">
-              <Menu
-                onOpen={() => setOpenedDg(true)}
-                onClose={() => setOpenedDg(false)}
-                radius="md"
-                width="target"
-                withinPortal
+      <div>
+        <InputWrapper size="md" label="Standesbuchnummer">
+          <TextInput variant="filled" placeholder="123" h={46} />
+        </InputWrapper>
+      </div>
+      <div>
+        <InputWrapper size="md" label="Vorname">
+          <TextInput variant="filled" placeholder="Maximillian" h={46} />
+        </InputWrapper>
+      </div>
+      <div>
+        <InputWrapper size="md" label="Nachname">
+          <TextInput variant="filled" placeholder="Mustermann" h={46} />
+        </InputWrapper>
+      </div>
+      <div>
+        <InputWrapper size="md" label="Dienstgrad">
+          <Menu
+            onOpen={() => setOpenedDg(true)}
+            onClose={() => setOpenedDg(false)}
+            radius="md"
+            width="target"
+            withinPortal
+          >
+            <MenuTarget>
+              <UnstyledButton
+                className={classes.control}
+                data-expanded={openedDg || undefined}
               >
-                <MenuTarget>
-                  <UnstyledButton
-                    className={classes.control}
-                    data-expanded={openedDg || undefined}
-                  >
-                    <Group gap="xs">
-                      <Image src={selectedDg.image} width={22} height={22} />
-                      <span className={classes.label}>{selectedDg.label}</span>
-                    </Group>
-                    <IconChevronDown
-                      size="1rem"
-                      className={classes.icon}
-                      stroke={1.5}
-                    />
-                  </UnstyledButton>
-                </MenuTarget>
-                <MenuDropdown className={classes.menu}>
-                  <ScrollArea h={350}>{dg}</ScrollArea>
-                </MenuDropdown>
-              </Menu>
-            </InputWrapper>
-          </div>
-          <div>
-            <Text size="md" fw={500}>
-              Ehrendienstgrad
-            </Text>
-            <Checkbox
-              classNames={classes}
-              label={ehrenDg ? "Ja" : "Nein"}
+                <Group gap="xs">
+                  <Image src={selectedDg.image} width={22} height={22} />
+                  <span className={classes.label}>{selectedDg.label}</span>
+                </Group>
+                <IconChevronDown
+                  size="1rem"
+                  className={classes.icon}
+                  stroke={1.5}
+                />
+              </UnstyledButton>
+            </MenuTarget>
+            <MenuDropdown className={classes.menu}>
+              <ScrollArea h={350}>{dg}</ScrollArea>
+            </MenuDropdown>
+          </Menu>
+        </InputWrapper>
+      </div>
+      <div style={{ marginTop: "8px" }}>
+        <Text size="md" fw={500}>
+          Ehrendienstgrad
+        </Text>
+        <Checkbox
+          classNames={classes}
+          label={ehrenDg ? "Ja" : "Nein"}
+          color="red"
+          h={42}
+          checked={ehrenDg}
+          onChange={(event) => setEhrenDg(event.currentTarget.checked)}
+          wrapperProps={{
+            onClick: () => setEhrenDg((c) => !c),
+          }}
+        />
+      </div>
+      <div style={{ marginTop: "16px" }}>
+        {titleImg ? (
+          <Paper
+            style={{ position: "relative", padding: "16px" }}
+            mb={34}
+            withBorder
+          >
+            <Image
+              src={URL.createObjectURL(titleImg)}
+              height={300}
+              fit="contain"
+              alt="Uploaded"
+            />
+            <CloseButton
               color="red"
-              h={42}
-              checked={ehrenDg}
-              onChange={(event) => setEhrenDg(event.currentTarget.checked)}
-              wrapperProps={{
-                onClick: () => setEhrenDg((c) => !c),
+              size="lg"
+              onClick={handleImageDelete}
+              style={{
+                position: "absolute",
+                top: "10px",
+                right: "10px",
+                fontWeight: "bold",
               }}
             />
-          </div>
-        </SimpleGrid>
-        {/*}
-        <SimpleGrid mt={50} cols={1}>
-          <div>
-            <div className={dropzoneImg.wrapper}>
-              <Dropzone
-                openRef={openRef}
-                onDrop={() => {}}
-                className={dropzoneImg.dropzone}
-                radius="md"
-                accept={[
-                  MIME_TYPES.png,
-                  MIME_TYPES.jpeg,
-                  MIME_TYPES.jpg,
-                  MIME_TYPES.gif,
-                ]}
-                maxSize={30 * 1024 ** 2}
-              >
-                <div style={{ pointerEvents: "none" }}>
-                  <Group justify="center">
-                    <DropzoneAccept>
-                      <IconDownload
-                        style={{ width: rem(50), height: rem(50) }}
-                        color={theme.colors.blue[6]}
-                        stroke={1.5}
-                      />
-                    </DropzoneAccept>
-                    <DropzoneReject>
-                      <IconX
-                        style={{ width: rem(50), height: rem(50) }}
-                        color={theme.colors.red[6]}
-                        stroke={1.5}
-                      />
-                    </DropzoneReject>
-                    <DropzoneIdle>
-                      <IconCloudUpload
-                        style={{ width: rem(50), height: rem(50) }}
-                        stroke={1.5}
-                      />
-                    </DropzoneIdle>
-                  </Group>
-
-                  <Text ta="center" fw={700} fz="lg" mt="xl">
-                    <DropzoneAccept>Drop files here</DropzoneAccept>
-                    <DropzoneReject>Pdf file less than 30mb</DropzoneReject>
-                    <DropzoneIdle>Upload resume</DropzoneIdle>
-                  </Text>
-                  <Text ta="center" fz="sm" mt="xs" c="dimmed">
-                    Drag&apos;n&apos;drop files here to upload. We can accept
-                    only <i>.pdf</i> files that are less than 30mb in size.
-                  </Text>
-                </div>
-              </Dropzone>
-
-              <Button
-                className={dropzoneImg.control}
-                size="md"
-                radius="xl"
-                color="red"
-                onClick={() => openRef.current?.()}
-              >
-                Select files
-              </Button>
-            </div>
-          </div>
-        </SimpleGrid>{*/}
-      </Card>
+          </Paper>
+        ) : (
+          <Dropzone
+            onDrop={handleFileDrop}
+            onReject={(files) => console.log("rejected files", files)}
+            accept={IMAGE_MIME_TYPE}
+            mb={34}
+            h={332}
+          >
+            <Group
+              justify="center"
+              gap="xl"
+              mih={300}
+              style={{ pointerEvents: "none" }}
+            >
+              <DropzoneAccept>
+                <IconUpload
+                  style={{
+                    width: rem(52),
+                    height: rem(52),
+                    color: "var(--mantine-color-blue-6)",
+                  }}
+                  stroke={1.5}
+                />
+              </DropzoneAccept>
+              <DropzoneReject>
+                <IconX
+                  style={{
+                    width: rem(52),
+                    height: rem(52),
+                    color: "var(--mantine-color-red-6)",
+                  }}
+                  stroke={1.5}
+                />
+              </DropzoneReject>
+              <DropzoneIdle>
+                <IconPhoto
+                  style={{
+                    width: rem(52),
+                    height: rem(52),
+                    color: "var(--mantine-color-dimmed)",
+                  }}
+                  stroke={1.5}
+                />
+              </DropzoneIdle>
+              <div>
+                <Text size="xl" inline>
+                  Bild hineinziehen oder hier klicken
+                </Text>
+                <Text size="sm" c="dimmed" inline mt={7}>
+                  Max. 1 Bild erlaubt im format 1x1
+                </Text>
+              </div>
+            </Group>
+          </Dropzone>
+        )}
+      </div>
     </>
   );
 }
