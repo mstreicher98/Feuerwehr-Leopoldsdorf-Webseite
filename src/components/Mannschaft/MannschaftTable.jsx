@@ -36,6 +36,9 @@ import {
 
 import classes from "./MannschaftTable.module.css";
 import { useEffect, useState } from "react";
+import { modals } from "@mantine/modals";
+import { notifications } from "@mantine/notifications";
+import { setupDevBundler } from "next/dist/server/lib/router-utils/setup-dev-bundler";
 
 const statusColors = {
   Aktiv: "lime.5",
@@ -51,6 +54,50 @@ export default function MannschaftTable() {
     <MannschaftTableLoadingSM />
   );
 
+  const openDeleteModal = (mann) => {
+    modals.openConfirmModal({
+      title: `${mann.attributes.Nachname} ${mann.attributes.Vorname} (${mann.attributes.Standesbuchnummer})`,
+      centered: true,
+      children: (
+        <Text size="sm">
+          Bist du sicher, dass du das Mannschaftsmitglied, wirklich löschen
+          möchtest? Dieser Vorgang kann nicht rückgängig gemacht werden.
+        </Text>
+      ),
+      labels: { confirm: "Löschen", cancel: "Abbrechen" },
+      confirmProps: { color: "red" },
+      onCancel: () => {},
+      onConfirm: () => deleteMitglied(mann.id),
+    });
+  };
+
+  const deleteMitglied = (id) => {
+    axios
+      .delete(`${server}/api/mannschafts/${id}?bearer=${token}`)
+      .then((res) => {
+        setMannschaftRows(<MannschaftTableLoading />);
+        setMannschaftSMRows(<MannschaftTableLoadingSM />);
+
+        
+
+
+
+        notifications.show({
+          title: `Erfolgreich gelöscht`,
+          message: 'Das Mitglied wurde erfolgreich gelöscht.',
+          color: 'green',
+          withCloseButton: true,
+        });
+      }).catch((err) => {
+        notifications.show({
+          title: `Es ist etwas schief gelaufen.`,
+          message: err.message,
+          color: 'red',
+          withCloseButton: true,
+        });
+      });
+  };
+
   useEffect(() => {
     axios
       .get(
@@ -58,6 +105,7 @@ export default function MannschaftTable() {
       )
       .then((res) => {
         const list = res.data.data.map((mann) => {
+          console.log(mann);
           return (
             <TableTr key={mann.attributes.Standesbuchnummer}>
               <TableTd>
@@ -149,7 +197,13 @@ export default function MannschaftTable() {
                       stroke={1.5}
                     />
                   </ActionIcon>
-                  <ActionIcon variant="subtle" color="red">
+                  <ActionIcon
+                    variant="subtle"
+                    color="red"
+                    onClick={() =>
+                      openDeleteModal(mann)
+                    }
+                  >
                     <IconTrash
                       style={{ width: "90%", height: "90%" }}
                       stroke={1.5}
@@ -185,7 +239,13 @@ export default function MannschaftTable() {
                       stroke={1.5}
                     />
                   </ActionIcon>
-                  <ActionIcon variant="subtle" color="red">
+                  <ActionIcon
+                    variant="subtle"
+                    color="red"
+                    onClick={() =>
+                      openDeleteModal(mann)
+                    }
+                  >
                     <IconTrash
                       style={{ width: "90%", height: "90%" }}
                       stroke={1.5}
@@ -216,7 +276,6 @@ export default function MannschaftTable() {
               return (
                 <TableTr key={mann.attributes.Standesbuchnummer}>
                   <TableTd>
-                    s
                     <Group gap="sm">
                       <Avatar
                         size={50}
@@ -305,7 +364,13 @@ export default function MannschaftTable() {
                           stroke={1.5}
                         />
                       </ActionIcon>
-                      <ActionIcon variant="subtle" color="red">
+                      <ActionIcon
+                        variant="subtle"
+                        color="red"
+                        onClick={() =>
+                          openDeleteModal(mann)
+                        }
+                      >
                         <IconTrash
                           style={{ width: "90%", height: "90%" }}
                           stroke={1.5}
@@ -341,7 +406,13 @@ export default function MannschaftTable() {
                           stroke={1.5}
                         />
                       </ActionIcon>
-                      <ActionIcon variant="subtle" color="red">
+                      <ActionIcon
+                        variant="subtle"
+                        color="red"
+                        onClick={() =>
+                          openDeleteModal(mann)
+                        }
+                      >
                         <IconTrash
                           style={{ width: "90%", height: "90%" }}
                           stroke={1.5}
@@ -466,7 +537,13 @@ export default function MannschaftTable() {
                         stroke={1.5}
                       />
                     </ActionIcon>
-                    <ActionIcon variant="subtle" color="red">
+                    <ActionIcon
+                      variant="subtle"
+                      color="red"
+                      onClick={() =>
+                        openDeleteModal(mann)
+                      }
+                    >
                       <IconTrash
                         style={{ width: "90%", height: "90%" }}
                         stroke={1.5}
@@ -502,7 +579,13 @@ export default function MannschaftTable() {
                         stroke={1.5}
                       />
                     </ActionIcon>
-                    <ActionIcon variant="subtle" color="red">
+                    <ActionIcon
+                      variant="subtle"
+                      color="red"
+                      onClick={() =>
+                        openDeleteModal(mann)
+                      }
+                    >
                       <IconTrash
                         style={{ width: "90%", height: "90%" }}
                         stroke={1.5}
@@ -518,7 +601,6 @@ export default function MannschaftTable() {
         });
     }
   }
-
   return (
     <Card mah={"100%"}>
       <TextInput

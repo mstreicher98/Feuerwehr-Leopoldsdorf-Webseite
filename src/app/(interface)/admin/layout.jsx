@@ -7,6 +7,7 @@ import "../../../style/admin.css";
 import { MantineProvider, ColorSchemeScript } from "@mantine/core";
 import AdminLayout from "@/components/Layouts/AdminLayout";
 import { Notifications } from "@mantine/notifications";
+import { ModalsProvider } from "@mantine/modals";
 
 export default function RootLayout({ children }) {
   return (
@@ -22,8 +23,10 @@ export default function RootLayout({ children }) {
       </head>
       <body>
         <MantineProvider defaultColorScheme="light">
-          <Notifications position="top-right" />
-          <AdminLayout>{children}</AdminLayout>
+          <ModalsProvider>
+            <Notifications position="top-right" />
+            <AdminLayout>{children}</AdminLayout>
+          </ModalsProvider>
         </MantineProvider>
       </body>
     </html>

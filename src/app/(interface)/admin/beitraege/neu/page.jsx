@@ -50,8 +50,6 @@ export default function BeitraegeNeuerBeitrag() {
   const [titleImg, setTitleImg] = useState(null);
   const [optionalImg, setOptionalImg] = useState(null);
 
-  console.log("");
-
   const iconStyle = { width: rem(18), height: rem(18) };
   const editor = useEditor({
     extensions: [
