@@ -16,7 +16,7 @@ import NextImage from "next/image";
 import { useRouter } from 'next/navigation'
 import cx from "clsx";
 
-export default function Login() {
+const Logout = () => {
   const router = useRouter();
   setTimeout(() => {
     router.push("/auth/login");
@@ -60,3 +60,4 @@ export default function Login() {
     </main>
   );
 }
+export default Logout;

@@ -9,7 +9,7 @@ import AdminLayout from "@/components/Layouts/AdminLayout";
 import { Notifications } from "@mantine/notifications";
 import { ModalsProvider } from "@mantine/modals";
 
-export default function RootLayout({ children }) {
+const RootLayout = ({ children }) => {
   return (
     <html lang="de">
       <head>
@@ -32,3 +32,4 @@ export default function RootLayout({ children }) {
     </html>
   );
 }
+export default RootLayout;

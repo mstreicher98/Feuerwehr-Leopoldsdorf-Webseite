@@ -1,8 +1,8 @@
 "use client";
 import { useRef, useState } from "react";
 import {
-  Button,
-  Card,
+  ActionIcon,
+  Affix,
   Checkbox,
   CloseButton,
   Group,
@@ -14,24 +14,21 @@ import {
   MenuTarget,
   Paper,
   ScrollArea,
-  SimpleGrid,
   Text,
   TextInput,
-  Title,
+  Tooltip,
   UnstyledButton,
   rem,
   useMantineTheme,
 } from "@mantine/core";
 import {
   IconChevronDown,
-  IconCloudUpload,
-  IconDownload,
   IconPhoto,
+  IconPlus,
   IconUpload,
   IconX,
 } from "@tabler/icons-react";
 import classes from "./MannschaftNeu.module.css";
-import dropzoneImg from "./MannschaftNeuDropzone.module.css";
 import {
   Dropzone,
   DropzoneAccept,
@@ -39,6 +36,7 @@ import {
   DropzoneReject,
   IMAGE_MIME_TYPE,
 } from "@mantine/dropzone";
+import { modals } from '@mantine/modals';
 
 const dataDg = [
   {
@@ -153,8 +151,7 @@ const dataDg = [
   { label: "Oberverwalter", value: "OV", image: "/images/dienstgrade/OV.png" },
   { label: "Hauptverwalter", value: "HV", image: "/images/dienstgrade/HV.png" },
 ];
-
-export default function MannschaftNeu() {
+const MannschaftNeuModal = () => {
   const theme = useMantineTheme();
   const openRef = useRef(null);
 
@@ -351,3 +348,37 @@ export default function MannschaftNeu() {
     </>
   );
 }
+
+const MannschaftNeu = () => {
+
+  const newMemberModal = () => {
+    modals.open({
+      title: 'Neues Miglied hinzufügen',
+      children: (
+        <>
+          <MannschaftNeuModal />
+        </>
+      ),
+    });
+  };
+
+  return (
+    <> 
+      <Tooltip label="Neues Mitglied hinzufügen" arrowPosition="side" arrowOffset={0} arrowSize={8} withArrow>
+        <Affix position={{ bottom: 30, right: 30 }}>
+          <ActionIcon
+            onClick={newMemberModal}
+            variant="filled"
+            size={50}
+            radius={360} 
+            color={"red.7"}
+          >
+            <IconPlus stroke={1.5} />
+
+          </ActionIcon>
+        </Affix>
+      </Tooltip>
+    </>
+  );
+}
+export default MannschaftNeu;

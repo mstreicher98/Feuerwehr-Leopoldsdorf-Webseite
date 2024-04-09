@@ -6,7 +6,7 @@ export const metadata = {
   description: "Die Ausrüstung der Freiwilligen Feuerwehr Leopoldsdorf",
 };
 
-export default function Fuhrpark() {
+const Ausruestung = () => {
   return (
     <Main>
       <Text component="div" ta="center" mb={30}>
@@ -18,3 +18,4 @@ export default function Fuhrpark() {
     </Main>
   );
 }
+export default Ausruestung;

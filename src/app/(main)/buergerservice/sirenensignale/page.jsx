@@ -1,5 +1,5 @@
 import Main from "../../../../components/Main/Main";
-import { Divider, List, ListItem, Text, TypographyStylesProvider } from "@mantine/core";
+import { List, ListItem, Text, TypographyStylesProvider } from "@mantine/core";
 
 import classes from "./page.module.css";
 
@@ -8,7 +8,7 @@ export const metadata = {
   description: "Alle Sirenensignale des österreichischen Zivilschutzsystems",
 };
 
-export default function Notruf() {
+const Sirenensignale = () => {
   return (
     <Main>
       <Text component="div" ta="center" mb={30}>
@@ -72,3 +72,4 @@ export default function Notruf() {
     </Main>
   );
 }
+export default Sirenensignale;

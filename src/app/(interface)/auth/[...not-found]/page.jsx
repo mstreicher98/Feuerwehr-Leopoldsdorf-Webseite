@@ -6,6 +6,7 @@ export const metadata = {
       "Willkommen auf der Webseite der Freiwilligen Feuerwehr Leopoldsdorf",
   };
 
-export default function NotFoundDummy() {
+const NotFoundDummy = () => {
   notFound();
 }
+export default NotFoundDummy

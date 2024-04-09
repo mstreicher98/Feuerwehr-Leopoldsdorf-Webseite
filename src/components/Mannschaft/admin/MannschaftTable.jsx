@@ -19,6 +19,7 @@ import {
   rem,
   Center,
   Box,
+  Skeleton,
 } from "@mantine/core";
 import {
   IconCheck,
@@ -28,11 +29,6 @@ import {
   IconX,
 } from "@tabler/icons-react";
 import axios from "axios";
-
-import {
-  MannschaftTableLoading,
-  MannschaftTableLoadingSM,
-} from "./MannschaftTableLoading";
 
 import classes from "./MannschaftTable.module.css";
 import { useEffect, useState } from "react";
@@ -45,7 +41,349 @@ const statusColors = {
   Jugend: "yellow.6",
 };
 
-export default function MannschaftTable() {
+export const MannschaftTableLoading = () => {
+  return (
+    <>
+      <TableTr>
+        <TableTd>
+          <Skeleton height={50} radius="xl" />
+        </TableTd>
+
+        <TableTd>
+          <Skeleton height={50} radius="xl" />
+        </TableTd>
+
+        <TableTd>
+          <Skeleton height={50} radius="xl" />
+        </TableTd>
+
+        <TableTd>
+          <Skeleton height={50} radius="xl" />
+        </TableTd>
+
+        <TableTd>
+          <Skeleton height={50} radius="xl" />
+        </TableTd>
+
+        <TableTd>
+          <Skeleton height={50} radius="xl" />
+        </TableTd>
+      </TableTr>
+      <TableTr>
+        <TableTd>
+          <Skeleton height={50} radius="xl" />
+        </TableTd>
+
+        <TableTd>
+          <Skeleton height={50} radius="xl" />
+        </TableTd>
+
+        <TableTd>
+          <Skeleton height={50} radius="xl" />
+        </TableTd>
+
+        <TableTd>
+          <Skeleton height={50} radius="xl" />
+        </TableTd>
+
+        <TableTd>
+          <Skeleton height={50} radius="xl" />
+        </TableTd>
+
+        <TableTd>
+          <Skeleton height={50} radius="xl" />
+        </TableTd>
+      </TableTr>      
+      <TableTr>
+        <TableTd>
+          <Skeleton height={50} radius="xl" />
+        </TableTd>
+
+        <TableTd>
+          <Skeleton height={50} radius="xl" />
+        </TableTd>
+
+        <TableTd>
+          <Skeleton height={50} radius="xl" />
+        </TableTd>
+
+        <TableTd>
+          <Skeleton height={50} radius="xl" />
+        </TableTd>
+
+        <TableTd>
+          <Skeleton height={50} radius="xl" />
+        </TableTd>
+
+        <TableTd>
+          <Skeleton height={50} radius="xl" />
+        </TableTd>
+      </TableTr>
+      <TableTr>
+        <TableTd>
+          <Skeleton height={50} radius="xl" />
+        </TableTd>
+
+        <TableTd>
+          <Skeleton height={50} radius="xl" />
+        </TableTd>
+
+        <TableTd>
+          <Skeleton height={50} radius="xl" />
+        </TableTd>
+
+        <TableTd>
+          <Skeleton height={50} radius="xl" />
+        </TableTd>
+
+        <TableTd>
+          <Skeleton height={50} radius="xl" />
+        </TableTd>
+
+        <TableTd>
+          <Skeleton height={50} radius="xl" />
+        </TableTd>
+      </TableTr>
+      <TableTr>
+        <TableTd>
+          <Skeleton height={50} radius="xl" />
+        </TableTd>
+
+        <TableTd>
+          <Skeleton height={50} radius="xl" />
+        </TableTd>
+
+        <TableTd>
+          <Skeleton height={50} radius="xl" />
+        </TableTd>
+
+        <TableTd>
+          <Skeleton height={50} radius="xl" />
+        </TableTd>
+
+        <TableTd>
+          <Skeleton height={50} radius="xl" />
+        </TableTd>
+
+        <TableTd>
+          <Skeleton height={50} radius="xl" />
+        </TableTd>
+      </TableTr>
+      <TableTr>
+        <TableTd>
+          <Skeleton height={50} radius="xl" />
+        </TableTd>
+
+        <TableTd>
+          <Skeleton height={50} radius="xl" />
+        </TableTd>
+
+        <TableTd>
+          <Skeleton height={50} radius="xl" />
+        </TableTd>
+
+        <TableTd>
+          <Skeleton height={50} radius="xl" />
+        </TableTd>
+
+        <TableTd>
+          <Skeleton height={50} radius="xl" />
+        </TableTd>
+
+        <TableTd>
+          <Skeleton height={50} radius="xl" />
+        </TableTd>
+      </TableTr>
+      <TableTr>
+        <TableTd>
+          <Skeleton height={50} radius="xl" />
+        </TableTd>
+
+        <TableTd>
+          <Skeleton height={50} radius="xl" />
+        </TableTd>
+
+        <TableTd>
+          <Skeleton height={50} radius="xl" />
+        </TableTd>
+
+        <TableTd>
+          <Skeleton height={50} radius="xl" />
+        </TableTd>
+
+        <TableTd>
+          <Skeleton height={50} radius="xl" />
+        </TableTd>
+
+        <TableTd>
+          <Skeleton height={50} radius="xl" />
+        </TableTd>
+      </TableTr>
+      <TableTr>
+        <TableTd>
+          <Skeleton height={50} radius="xl" />
+        </TableTd>
+
+        <TableTd>
+          <Skeleton height={50} radius="xl" />
+        </TableTd>
+
+        <TableTd>
+          <Skeleton height={50} radius="xl" />
+        </TableTd>
+
+        <TableTd>
+          <Skeleton height={50} radius="xl" />
+        </TableTd>
+
+        <TableTd>
+          <Skeleton height={50} radius="xl" />
+        </TableTd>
+
+        <TableTd>
+          <Skeleton height={50} radius="xl" />
+        </TableTd>
+      </TableTr>
+      <TableTr>
+        <TableTd>
+          <Skeleton height={50} radius="xl" />
+        </TableTd>
+
+        <TableTd>
+          <Skeleton height={50} radius="xl" />
+        </TableTd>
+
+        <TableTd>
+          <Skeleton height={50} radius="xl" />
+        </TableTd>
+
+        <TableTd>
+          <Skeleton height={50} radius="xl" />
+        </TableTd>
+
+        <TableTd>
+          <Skeleton height={50} radius="xl" />
+        </TableTd>
+
+        <TableTd>
+          <Skeleton height={50} radius="xl" />
+        </TableTd>
+      </TableTr>
+      <TableTr>
+        <TableTd>
+          <Skeleton height={50} radius="xl" />
+        </TableTd>
+
+        <TableTd>
+          <Skeleton height={50} radius="xl" />
+        </TableTd>
+
+        <TableTd>
+          <Skeleton height={50} radius="xl" />
+        </TableTd>
+
+        <TableTd>
+          <Skeleton height={50} radius="xl" />
+        </TableTd>
+
+        <TableTd>
+          <Skeleton height={50} radius="xl" />
+        </TableTd>
+
+        <TableTd>
+          <Skeleton height={50} radius="xl" />
+        </TableTd>
+      </TableTr>
+    </>
+  );
+}
+export const MannschaftTableLoadingSM = () => {
+    return (
+      <>
+        <TableTr>
+          <TableTd>
+            <Skeleton height={50} radius="xl" />
+          </TableTd>
+          <TableTd>
+            <Skeleton height={50} radius="xl" />
+          </TableTd>
+        </TableTr>
+        <TableTr>
+          <TableTd>
+            <Skeleton height={50} radius="xl" />
+          </TableTd>
+          <TableTd>
+            <Skeleton height={50} radius="xl" />
+          </TableTd>
+        </TableTr>
+        <TableTr>
+          <TableTd>
+            <Skeleton height={50} radius="xl" />
+          </TableTd>
+          <TableTd>
+            <Skeleton height={50} radius="xl" />
+          </TableTd>
+        </TableTr>
+        <TableTr>
+          <TableTd>
+            <Skeleton height={50} radius="xl" />
+          </TableTd>
+          <TableTd>
+            <Skeleton height={50} radius="xl" />
+          </TableTd>
+        </TableTr>
+        <TableTr>
+          <TableTd>
+            <Skeleton height={50} radius="xl" />
+          </TableTd>
+          <TableTd>
+            <Skeleton height={50} radius="xl" />
+          </TableTd>
+        </TableTr>
+        <TableTr>
+          <TableTd>
+            <Skeleton height={50} radius="xl" />
+          </TableTd>
+          <TableTd>
+            <Skeleton height={50} radius="xl" />
+          </TableTd>
+        </TableTr>
+        <TableTr>
+          <TableTd>
+            <Skeleton height={50} radius="xl" />
+          </TableTd>
+          <TableTd>
+            <Skeleton height={50} radius="xl" />
+          </TableTd>
+        </TableTr>
+        <TableTr>
+          <TableTd>
+            <Skeleton height={50} radius="xl" />
+          </TableTd>
+          <TableTd>
+            <Skeleton height={50} radius="xl" />
+          </TableTd>
+        </TableTr>
+        <TableTr>
+          <TableTd>
+            <Skeleton height={50} radius="xl" />
+          </TableTd>
+          <TableTd>
+            <Skeleton height={50} radius="xl" />
+          </TableTd>
+        </TableTr>
+        <TableTr>
+          <TableTd>
+            <Skeleton height={50} radius="xl" />
+          </TableTd>
+          <TableTd>
+            <Skeleton height={50} radius="xl" />
+          </TableTd>
+        </TableTr>
+      </>
+    );
+}
+const MannschaftTable = () => {
   const [mannschaftRows, setMannschaftRows] = useState(
     <MannschaftTableLoading />
   );
@@ -653,3 +991,4 @@ export default function MannschaftTable() {
     </Card>
   );
 }
+export default MannschaftTable;

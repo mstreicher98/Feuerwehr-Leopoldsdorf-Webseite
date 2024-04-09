@@ -17,7 +17,7 @@ import cx from "clsx";
 import classes from "./AdminLayout.module.css";
 import { IconMoon, IconSun } from "@tabler/icons-react";
 
-export default function AdminLayout({ children }) {
+const AdminLayout = ({ children }) => {
   const [mobileOpened, { toggle: toggleMobile }] = useDisclosure(false);
   const [desktopOpened, { toggle: toggleDesktop }] = useDisclosure(true);
 
@@ -134,3 +134,4 @@ export default function AdminLayout({ children }) {
     </AppShell>
   );
 }
+export default AdminLayout;

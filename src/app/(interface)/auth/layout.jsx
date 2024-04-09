@@ -3,9 +3,9 @@ import "../../../style/auth.css";
 
 import { MantineProvider, ColorSchemeScript } from "@mantine/core";
 import AuthLayout from "@/components/Layouts/AuthLayout";
-import AuthToggleButton from "@/components/AuthToggleButton/AuthToggleButton";
+import AuthToggleButton from "@/components/Auth/AuthToggleButton";
 
-export default function Layout({ children }) {
+const RootLayout = ({ children }) => {
   return (
     <html lang="de">
       <head>
@@ -23,3 +23,4 @@ export default function Layout({ children }) {
     </html>
   );
 }
+export default RootLayout;

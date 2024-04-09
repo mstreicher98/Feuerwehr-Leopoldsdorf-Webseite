@@ -1,10 +1,12 @@
 import AuthNotFound from "@/components/Not-Found/AuthNotFound";
 
-import classes from "./not-found.module.css"
+import classes from "./not-found.module.css";
 
-
-export default function NotFound() {
+const NotFound = () => {
   return (
-    <main className={classes.center}><AuthNotFound /></main>
+    <main className={classes.center}>
+      <AuthNotFound />
+    </main>
   );
-}
+};
+export default NotFound;

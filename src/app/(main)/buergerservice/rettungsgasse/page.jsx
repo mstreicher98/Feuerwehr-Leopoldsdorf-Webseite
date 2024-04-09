@@ -20,7 +20,7 @@ export const metadata = {
     "Helfen Sie mit um Leben zu retten, Rettungsgasse bilden",
 };
 
-export default function Rettungsgasse() {
+const Rettungsgasse = () => {
   return (
     <Main>
       <Text component="div" ta="center" mb={30}>
@@ -103,3 +103,4 @@ export default function Rettungsgasse() {
     </Main>
   );
 }
+export default Rettungsgasse;

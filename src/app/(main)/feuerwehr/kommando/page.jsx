@@ -11,7 +11,7 @@ export const metadata = {
   description: 'Das Kommando der Freiwilligen Feuerwehr Leopoldsdorf',
 };
 
-export default function Kommando() {
+const Kommando = () => {
   return (
     <Main>
       <Text component="div" ta="center" mb={30}>
@@ -24,3 +24,4 @@ export default function Kommando() {
     </Main>
   );
 }
+export default Kommando;

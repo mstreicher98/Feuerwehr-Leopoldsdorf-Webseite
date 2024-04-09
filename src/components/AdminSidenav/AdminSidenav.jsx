@@ -33,7 +33,7 @@ const feuerwehr = [
 ];
 const admin = [{ link: "/admin/accounts", label: "Accounts", icon: IconKey }];
 
-export default function AdminSidenav({ mobile, opened }) {
+const AdminSidenav = ({ mobile, opened }) => {
   const allgemeinLinks = allgemein.map((item) => (
     <NextLink className={classes.link} href={item.link} key={item.label}>
       <item.icon className={classes.linkIcon} stroke={1.5} />
@@ -118,3 +118,4 @@ export default function AdminSidenav({ mobile, opened }) {
     </nav>
   );
 }
+export default AdminSidenav;

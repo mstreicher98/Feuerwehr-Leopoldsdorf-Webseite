@@ -5,7 +5,7 @@ import { MantineProvider, ColorSchemeScript } from "@mantine/core";
 
 import MainLayout from "@/components/Layouts/MainLayout";
 
-export default function RootLayout({ children }) {
+const RootLayout = ({ children }) => {
   return (
     <html lang="de">
       <head>
@@ -25,3 +25,4 @@ export default function RootLayout({ children }) {
     </html>
   );
 }
+export default RootLayout;

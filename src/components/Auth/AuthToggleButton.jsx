@@ -13,7 +13,7 @@ import { IconMoon, IconSun } from "@tabler/icons-react";
 
 import classes from "./AuthToggleButton.module.css";
 
-export default function AuthToggleButton() {
+const AuthToggleButton = () => {
   const theme = useMantineTheme();
 
   const { setColorScheme } = useMantineColorScheme();
@@ -38,3 +38,4 @@ export default function AuthToggleButton() {
     </Affix>
   );
 }
+export default AuthToggleButton;

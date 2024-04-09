@@ -7,7 +7,7 @@ export const metadata = {
   description: "Admin Interface Freiwilligen Feuerwehr Leopoldsdorf",
 };
 
-export default function Beitraege() {
+const Beitraege = () => {
   return (
     <>
       <Tooltip
@@ -32,4 +32,5 @@ export default function Beitraege() {
       </Tooltip>
     </>
   );
-}
+};
+export default Beitraege;

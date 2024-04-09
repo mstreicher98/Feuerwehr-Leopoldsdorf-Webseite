@@ -1,18 +1,17 @@
-import MannschaftTable from "@/components/Mannschaft/MannschaftTable";
-import MannschaftNeuAffix from "@/components/Mannschaft/MannschaftNeuAffix";
+import MannschaftTable from "@/components/Mannschaft/admin/MannschaftTable";
+import MannschaftNeu from "@/components/Mannschaft/admin/MannschaftNeu";
 
 export const metadata = {
   title: "Admin | Freiwillige Feuerwehr Leopoldsdorf",
   description: "Admin Interface Freiwilligen Feuerwehr Leopoldsdorf",
 };
 
-
-export default function Mannschaft() {
-
+const Mannschaft = () => {
   return (
-    <> 
+    <>
       <MannschaftTable />
-      <MannschaftNeuAffix />
+      <MannschaftNeu />
     </>
   );
-}
+};
+export default Mannschaft;
