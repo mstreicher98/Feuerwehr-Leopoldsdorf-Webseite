@@ -1,4 +1,5 @@
 import "@mantine/core/styles.css";
+import '@mantine/carousel/styles.css';
 import "../../style/styles.css";
 
 import { MantineProvider, ColorSchemeScript } from "@mantine/core";

@@ -1,41 +1,32 @@
+import FahrzeugSide from "@/components/Fahrzeug/FahrzeugSide";
 import Main from "../../../../../components/Main/Main";
-import { Text, TypographyStylesProvider } from "@mantine/core";
-
+import axios from "axios";
+import { server, token } from "@/database/connection";
 import { notFound } from "next/navigation";
 
-import { FUHRPARK_DATA } from "/public/data/feuerwehr.js";
 
-export function generateMetadata({ params }) {
-  const fahrzeug = findFahrzeug(params.id);
-
-  if (fahrzeug === undefined) {
-    notFound();
-  }
-
+export async function generateMetadata({ params }) {
+  await axios
+  .get(
+    `${server}/api/fahrzeuges?filters[Fahrzeug_id][$eq]=${params.id}&populate=*&bearer=${token}`
+  )
+  .then((res) => {
+    if (!res.data.data.length > 0) {
+      notFound();
+    }
+  }); 
   return {
-    title: `${fahrzeug.kurzbezeichnung} | Freiwillige Feuerwehr Leopoldsdorf`,
-    description: `${fahrzeug.beschreibung}`,
+    title: `${params.id.toUpperCase()} | Freiwillige Feuerwehr Leopoldsdorf`,
+    description: `Unser ${params.id.toUpperCase()} Fahrzeug`,
   };
 }
 
-function findFahrzeug(fahrzeugid) {
-  return FUHRPARK_DATA.find(({ id }) => id === fahrzeugid);
-}
-
 export default function Fahrzeug({ params }) {
-  const fahrzeug = findFahrzeug(params.id);
-  if (fahrzeug === undefined) {
-    notFound();
-  }
+
 
   return (
     <Main>
-      <Text component="div" ta="center" mb={30}>
-        <TypographyStylesProvider pl={0}>
-          <h1>{fahrzeug.kurzbezeichnung}</h1>
-          <p>Der Fuhrpark der Freiwilligen Feuerwehr Leopoldsdorf</p>
-        </TypographyStylesProvider>
-      </Text>
+      <FahrzeugSide fahrzeugId={params.id} />
     </Main>
   );
 }
