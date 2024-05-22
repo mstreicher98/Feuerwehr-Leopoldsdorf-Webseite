@@ -9,7 +9,7 @@ export const metadata = {
 };
 
 
-export default function Fuhrpark() {
+const Fuhrpark = () => {
   return (
     <>
       <FahrzeugTable />
@@ -31,3 +31,4 @@ export default function Fuhrpark() {
     </>
   );
 }
+export default Fuhrpark;

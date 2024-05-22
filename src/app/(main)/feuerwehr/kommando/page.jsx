@@ -8,7 +8,7 @@ export const metadata = {
   description: "Das Kommando der Freiwilligen Feuerwehr Leopoldsdorf",
 };
 
-export default function Kommando() {
+const Kommando = () => {
   return (
     <>
       <Banner />
@@ -18,3 +18,4 @@ export default function Kommando() {
     </>
   );
 }
+export default Kommando;

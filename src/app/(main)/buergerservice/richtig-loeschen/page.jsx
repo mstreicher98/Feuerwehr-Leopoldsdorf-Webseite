@@ -9,7 +9,7 @@ export const metadata = {
   description: "Der richtige Umgang mit einem Feuerlöscher im Fall eines Brandes",
 };
 
-export default function RichtigLoeschen() {
+const RichtigLoeschen = () => {
   return (
     <Main>
       <Text component="div" ta="center" mb={30}>
@@ -30,3 +30,4 @@ export default function RichtigLoeschen() {
     </Main>
   );
 }
+export default RichtigLoeschen;

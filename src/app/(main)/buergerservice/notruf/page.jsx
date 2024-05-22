@@ -8,7 +8,7 @@ export const metadata = {
   description: "Das richtige Vorgehen beim absetzten eines Notrufs",
 };
 
-export default function Notruf() {
+const Notruf = () => {
   return (
     <Main>
       <Text component="div" ta="center" mb={30}>
@@ -97,3 +97,4 @@ export default function Notruf() {
     </Main>
   );
 }
+export default Notruf;

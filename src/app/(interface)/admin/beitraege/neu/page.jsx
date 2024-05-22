@@ -42,15 +42,13 @@ import { notifications } from "@mantine/notifications";
 //   description: "Admin Interface Freiwilligen Feuerwehr Leopoldsdorf",
 // };
 
-export default function BeitraegeNeuerBeitrag() {
+const BeitraegeNeuerBeitrag = () => {
   const [title, setTitle] = useState("");
   const [text, setText] = useState('<p style="text-align: justify"></p>');
   const [type, setType] = useState("allgemein");
   const [date, setDate] = useState(new Date());
   const [titleImg, setTitleImg] = useState(null);
   const [optionalImg, setOptionalImg] = useState(null);
-
-  console.log("");
 
   const iconStyle = { width: rem(18), height: rem(18) };
   const editor = useEditor({
@@ -515,4 +513,5 @@ export default function BeitraegeNeuerBeitrag() {
       )}
     </Card>
   );
-}
+};
+export default BeitraegeNeuerBeitrag;

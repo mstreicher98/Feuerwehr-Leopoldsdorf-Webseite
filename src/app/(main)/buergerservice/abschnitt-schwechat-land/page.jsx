@@ -73,7 +73,7 @@ const FEUERWEHREN_DATA = [
   },
 ];
 
-export default function Abschnitt() {
+const Abschnitt = () => {
   const feuerwehren = FEUERWEHREN_DATA.map((feuerwehr) => {
     return (
       <TableTr key={feuerwehr.name}>
@@ -109,3 +109,4 @@ export default function Abschnitt() {
     </Main>
   );
 }
+export default Abschnitt;

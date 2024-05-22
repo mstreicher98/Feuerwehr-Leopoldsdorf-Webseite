@@ -1,3 +1,5 @@
-export default function AuthLayout({ children }) {
+const AuthLayout = ({ children }) => {
   return <>{children}</>;
 }
+
+export default AuthLayout;

@@ -27,7 +27,7 @@ import NextLink from "next/link";
 import cx from "clsx";
 import { IconArrowLeft } from "@tabler/icons-react";
 
-export default function Login() {
+const Login = () => {
   const themeLogin = createTheme({
     components: {
       Input: Input.extend({
@@ -108,3 +108,4 @@ export default function Login() {
     </main>
   );
 }
+export default Login;

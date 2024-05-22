@@ -1,6 +1,6 @@
 import { Container } from "@mantine/core";
 
-export default function Main({children, centered, nomargin}) {
+const Main = ({children, centered, nomargin}) => {
     return (
         <main className={nomargin ? "nomargin" : ""}>
             <Container size="xl" ta={centered ? "center" : ""}>
@@ -9,3 +9,4 @@ export default function Main({children, centered, nomargin}) {
         </main>
     );
 }
+export default  Main;

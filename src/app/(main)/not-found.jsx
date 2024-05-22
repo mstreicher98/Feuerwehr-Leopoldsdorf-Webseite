@@ -1,7 +1,8 @@
 import MainNotFound from "@/components/Not-Found/MainNotFound";
 
-export default function NotFound() {
+const NotFound = () => {
   return (
     <MainNotFound />
   );
 }
+export default NotFound;

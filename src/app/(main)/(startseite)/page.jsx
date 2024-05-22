@@ -31,7 +31,7 @@ const jugend_data = {
 };
 
 
-export default function Startseite() {
+const Startseite = () => {
   return (
     <>
       <Banner />
@@ -44,3 +44,4 @@ export default function Startseite() {
     </>
   );
 }
+export default Startseite;
