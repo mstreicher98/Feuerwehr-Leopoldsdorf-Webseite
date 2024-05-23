@@ -13,10 +13,8 @@ import {
   UnstyledButton,
 } from "@mantine/core";
 import axios from "axios";
-
 import { useEffect, useState } from "react";
-import KommandoLoading from "./KommandoLoading";
-
+import KommandoLoading from "../main/KommandoLoading";
 import classes from "./KommandoTable.module.css";
 import { IconEdit } from "@tabler/icons-react";
 

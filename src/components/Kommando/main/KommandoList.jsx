@@ -2,11 +2,12 @@
 import { server, token } from "@/database/connection";
 import { SimpleGrid } from "@mantine/core";
 import axios from "axios";
+
+import { useEffect, useState } from "react";
 import KommandoCard from "./KommandoCard";
 import KommandoLoading from "./KommandoLoading";
-import { useEffect, useState } from "react";
 
-export default function KommandoList() {
+const KommandoList = () => {
   const [data, setData] = useState(<KommandoLoading />);
 
   useEffect(() => {
@@ -41,3 +42,4 @@ export default function KommandoList() {
     </SimpleGrid>
   );
 }
+export default  KommandoList;

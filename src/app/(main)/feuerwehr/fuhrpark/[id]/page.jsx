@@ -1,7 +1,5 @@
-import FahrzeugSide from "@/components/Fahrzeug/FahrzeugSide";
+import FahrzeugSide from "@/components/Fahrzeug/main/FahrzeugSide";
 import Main from "../../../../../components/Main/Main";
-import axios from "axios";
-import { server, token } from "@/database/connection";
 import { notFound } from "next/navigation";
 import axios from "axios";
 import { server, token } from "@/database/connection";
@@ -23,7 +21,7 @@ export async function generateMetadata({ params }) {
   };
 }
 
-export default function Fahrzeug({ params }) {
+ const Fahrzeug = ({ params }) => {
 
 
   return (

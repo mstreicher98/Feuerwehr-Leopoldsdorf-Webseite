@@ -1,4 +1,4 @@
-import { KommandoTable } from "@/components/Kommando/KommandoTable";
+import { KommandoTable } from "@/components/Kommando/admin/KommandoTable";
 
 export const metadata = {
   title: "Admin | Freiwillige Feuerwehr Leopoldsdorf",

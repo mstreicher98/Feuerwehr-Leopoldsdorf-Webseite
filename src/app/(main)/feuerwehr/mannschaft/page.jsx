@@ -17,3 +17,4 @@ const Mannschaft = () => {
     </>
   );
 }
+export default Mannschaft;

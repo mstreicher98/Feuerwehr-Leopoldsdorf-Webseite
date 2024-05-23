@@ -1,4 +1,4 @@
-import { FahrzeugTable } from "@/components/Fahrzeug/FahrzeugTable";
+import { FahrzeugTable } from "@/components/Fahrzeug/admin/FahrzeugTable";
 import { ActionIcon, Affix, Tooltip } from "@mantine/core";
 import { IconPlus } from "@tabler/icons-react";
 import NextLink from "next/link";

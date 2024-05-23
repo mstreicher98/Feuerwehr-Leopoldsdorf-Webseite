@@ -1,7 +1,6 @@
 import Main from "../../../../components/Main/Main";
-import FahrzeugList from "../../../../components/Fahrzeug/FahrzeugList";
-
-import { Text, TypographyStylesProvider } from "@mantine/core";
+import Banner from "@/components/Banner/Fuhrpark/Banner";
+import FahrzeugList from "../../../../components/Fahrzeug/main/FahrzeugList";
 
 export const metadata = {
   title: "Fuhrpark | Freiwillige Feuerwehr Leopoldsdorf",
@@ -11,15 +10,12 @@ export const metadata = {
 
 const Fuhrpark = () => {
   return (
-    <Main>
-      <Text component="div" ta="center" mb={30}>
-        <TypographyStylesProvider pl={0}>
-          <h1>Fuhrpark</h1>
-          <p>Der Fuhrpark der Freiwilligen Feuerwehr Leopoldsdorf</p>
-        </TypographyStylesProvider>
-      </Text>
-      <FahrzeugList />
+    <>
+    <Banner />
+    <Main >
+    <FahrzeugList />
     </Main>
+  </>
   );
 }
 export default Fuhrpark;

@@ -1,7 +1,7 @@
 import { Banner } from "@/components/Banner/Kommando/Banner";
 import Main from "../../../../components/Main/Main";
+import KommandoList from "@/components/Kommando/main/KommandoList";
 
-import KommandoList from "@/components/Kommando/KommandoList";
 
 export const metadata = {
   title: "Kommando | Freiwillige Feuerwehr Leopoldsdorf",

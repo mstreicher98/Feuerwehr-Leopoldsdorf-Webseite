@@ -12,7 +12,7 @@ export default function FahrzeugList() {
   
   useEffect(() => {
     axios
-      .get(`${server}/api/fahrzeuges?populate=*&bearer=${token}`)
+      .get(`${server}/api/fahrzeuges?sort[0]=sort_order&populate=*&bearer=${token}`)
       .then((fahrzeugRes) => {
         const list = fahrzeugRes.data.data.map((fahrzeug) => {
           return <FahrzeugCard key={fahrzeug.attributes.Fahrzeug_id} fahrzeug={fahrzeug.attributes} />;
