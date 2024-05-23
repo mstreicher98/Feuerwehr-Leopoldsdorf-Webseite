@@ -7,7 +7,6 @@ import {
   Group,
   Text,
   ActionIcon,
-  UnstyledButton,
   TableThead,
   TableScrollContainer,
   TableTr,
@@ -33,8 +32,8 @@ import { modals } from "@mantine/modals";
 
 const statusColors = {
   Aktiv: "lime.5",
-  Reserve: "red.6",
-  Jugend: "yellow.6",
+  Historisch: "red.6",
+  Inaktiv: "yellow.6",
 };
 
 export function FahrzeugTable() {
@@ -84,7 +83,9 @@ export function FahrzeugTable() {
 
   const renderList = () => {
     axios
-      .get(`${server}/api/Fahrzeuges?sort[0]=sort_order&populate=*&bearer=${token}`)
+      .get(
+        `${server}/api/Fahrzeuges?sort[0]=sort_order&populate=*&bearer=${token}`
+      )
       .then((res) => {
         const list = res.data.data.map((fahrzeug) => {
           return (
@@ -114,7 +115,14 @@ export function FahrzeugTable() {
                   {fahrzeug.attributes.Funkname}
                 </Text>
               </TableTd>
-
+              <TableTd>
+                <Badge
+                  color={statusColors[fahrzeug.attributes.Status]}
+                  variant="light"
+                >
+                  {fahrzeug.attributes.Status}
+                </Badge>
+              </TableTd>
               <TableTd>
                 <Group gap={10} justify="flex-end">
                   <ActionIcon variant="subtle" size={"md"} color="gray">
@@ -186,7 +194,9 @@ export function FahrzeugTable() {
       });
   };
 
-  useEffect(() => {renderList()}, []);
+  useEffect(() => {
+    renderList();
+  }, []);
 
   function handleSearch(event) {
     if (event.target.value.trim() !== "") {
@@ -224,7 +234,14 @@ export function FahrzeugTable() {
                       {fahrzeug.attributes.Funkname}
                     </Text>
                   </TableTd>
-
+                  <TableTd>
+                    <Badge
+                      color={statusColors[fahrzeug.attributes.Status]}
+                      variant="light"
+                    >
+                      {fahrzeug.attributes.Status}
+                    </Badge>
+                  </TableTd>
                   <TableTd>
                     <Group gap={10} justify="flex-end">
                       <ActionIcon variant="subtle" size={"md"} color="gray">
@@ -280,7 +297,7 @@ export function FahrzeugTable() {
                         variant="subtle"
                         color="red"
                         onClick={() => openDeleteModal(fahrzeug)}
-                      >
+                      >http://localhost:3000/admin/mannschaft
                         <IconTrash
                           style={{ width: "90%", height: "90%" }}
                           stroke={1.5}
@@ -309,7 +326,9 @@ export function FahrzeugTable() {
         });
     } else {
       axios
-        .get(`${server}/api/Fahrzeuges?sort[0]=sort_order&populate=*&bearer=${token}`)
+        .get(
+          `${server}/api/Fahrzeuges?sort[0]=sort_order&populate=*&bearer=${token}`
+        )
         .then((res) => {
           const list = res.data.data.map((fahrzeug) => {
             return (
@@ -339,7 +358,14 @@ export function FahrzeugTable() {
                     {fahrzeug.attributes.Funkname}
                   </Text>
                 </TableTd>
-
+                <TableTd>
+                  <Badge
+                    color={statusColors[fahrzeug.attributes.Status]}
+                    variant="light"
+                  >
+                    {fahrzeug.attributes.Status}
+                  </Badge>
+                </TableTd>
                 <TableTd>
                   <Group gap={10} justify="flex-end">
                     <ActionIcon variant="subtle" size={"md"} color="gray">
@@ -434,6 +460,7 @@ export function FahrzeugTable() {
               <TableTh>Fahrzeug</TableTh>
               <TableTh>Kurz</TableTh>
               <TableTh>Funkname</TableTh>
+              <TableTh>Status</TableTh>
               <TableTh />
             </TableTr>
           </TableThead>

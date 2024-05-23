@@ -12,7 +12,7 @@ const Fuhrpark = () => {
   return (
     <>
     <Banner />
-    <Main >
+    <Main nomargin>
     <FahrzeugList />
     </Main>
   </>

@@ -1,26 +1,32 @@
-import { Skeleton } from "@mantine/core";
+import { GridCol, Skeleton } from "@mantine/core";
 
-export default function FahrzeugLoading() {
+const FahrzeugLoading = () => {
+  const xl = 4;
+  const lg = 4;
+  const md = 6;
+  const sm = 6;
+  const xs = 12;
   return (
     <>
-      <div>
+      <GridCol span={{ xs, sm, md, lg, xl }}>
         <Skeleton height={600}></Skeleton>
-      </div>
-      <div>
+      </GridCol>
+      <GridCol span={{ xs, sm, md, lg, xl }}>
         <Skeleton height={600}></Skeleton>
-      </div>
-      <div>
+      </GridCol>
+      <GridCol span={{ xs, sm, md, lg, xl }}>
         <Skeleton height={600}></Skeleton>
-      </div>
-      <div>
+      </GridCol>
+      <GridCol span={{ xs, sm, md, lg, xl }}>
         <Skeleton height={600}></Skeleton>
-      </div>
-      <div>
+      </GridCol>
+      <GridCol span={{ xs, sm, md, lg, xl }}>
         <Skeleton height={600}></Skeleton>
-      </div>
-      <div>
+      </GridCol>
+      <GridCol span={{ xs, sm, md, lg, xl }}>
         <Skeleton height={600}></Skeleton>
-      </div>
+      </GridCol>
     </>
   );
 }
+export default FahrzeugLoading;

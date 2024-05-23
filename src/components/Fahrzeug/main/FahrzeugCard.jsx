@@ -1,11 +1,25 @@
-import { Card, Image, Text, Group, Button, CardSection, Divider } from '@mantine/core';
-import { server } from  '@/database/connection'
+import {
+  Card,
+  Image,
+  Text,
+  Group,
+  Button,
+  CardSection,
+  Divider,
+  GridCol,
+} from "@mantine/core";
+import { server } from "@/database/connection";
 import classes from "./FahrzeugCard.module.css";
-import NextLink from 'next/link';
+import NextLink from "next/link";
 
 export default function Fahrzeug({ fahrzeug, ...props }) {
+  const xl = 4;
+  const lg = 4;
+  const md = 6;
+  const sm = 6;
+  const xs = 12;
   return (
-    <div>
+    <GridCol span={{ xs, sm, md, lg, xl }}>
       <Card radius="md" p="md">
         <CardSection>
           <Image
@@ -19,7 +33,8 @@ export default function Fahrzeug({ fahrzeug, ...props }) {
         <CardSection className={classes.section} mt="md">
           <Group justify="apart">
             <Text fz="lg" fw={500}>
-              {fahrzeug.Bezeichnung}<br />({fahrzeug.Kurzbezeichnung})
+              {fahrzeug.Bezeichnung}
+              <br />({fahrzeug.Kurzbezeichnung})
             </Text>
           </Group>
           <Text fz="sm" mt="xs" lineClamp={4}>
@@ -27,11 +42,17 @@ export default function Fahrzeug({ fahrzeug, ...props }) {
           </Text>
         </CardSection>
         <Group mt="xs">
-          <Button component={NextLink} href={`/feuerwehr/fuhrpark/${fahrzeug.Fahrzeug_id}`} radius="md" color='red.7' style={{ flex: 1 }}>
+          <Button
+            component={NextLink}
+            href={`/feuerwehr/fuhrpark/${fahrzeug.Fahrzeug_id}`}
+            radius="md"
+            color="red.7"
+            style={{ flex: 1 }}
+          >
             Mehr Infos
           </Button>
         </Group>
       </Card>
-    </div>
+    </GridCol>
   );
 }
