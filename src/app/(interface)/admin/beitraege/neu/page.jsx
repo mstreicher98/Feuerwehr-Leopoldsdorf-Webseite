@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import {
   Box,
   Card,
@@ -20,7 +20,7 @@ import {
   rem,
 } from "@mantine/core";
 import { RichTextEditor, Link } from "@mantine/tiptap";
-import { BubbleMenu, useEditor } from "@tiptap/react";
+import { BubbleMenu, generateHTML, useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import Underline from "@tiptap/extension-underline";
 import TextAlign from "@tiptap/extension-text-align";
@@ -44,11 +44,22 @@ import { notifications } from "@mantine/notifications";
 
 const BeitraegeNeuerBeitrag = () => {
   const [title, setTitle] = useState("");
-  const [text, setText] = useState('<p style="text-align: justify"></p>');
+  const [content, setContent] = useState('<p style="text-align: justify"></p>');
   const [type, setType] = useState("allgemein");
   const [date, setDate] = useState(new Date());
   const [titleImg, setTitleImg] = useState(null);
   const [optionalImg, setOptionalImg] = useState(null);
+
+  console.log(content);
+  // const output = useMemo(() => {
+  //   return generateHTML(content, [
+  //     Document,
+  //     Paragraph,
+  //     Text,
+  //     Bold,
+  //     // other extensions …
+  //   ]);
+  // }, [content]);
 
   const iconStyle = { width: rem(18), height: rem(18) };
   const editor = useEditor({
@@ -59,9 +70,9 @@ const BeitraegeNeuerBeitrag = () => {
       TextAlign.configure({ types: ["heading", "paragraph"] }),
       Placeholder.configure({ placeholder: "Beitragstext" }),
     ],
-    content: text,
+    content: content,
     onUpdate({ editor }) {
-      setText(editor.getHTML());
+      setContent(editor.getJSON());
     },
   });
 
@@ -319,6 +330,78 @@ const BeitraegeNeuerBeitrag = () => {
 
           <SimpleGrid cols={{ base: 1, sm: 1, lg: 2 }} h={"100%"}>
             <div>
+              <RichTextEditor
+                editor={editor}
+                h={"100%"}
+                mah={"100%"}
+                styles={{
+                  root: {
+                    display: "flex",
+                    flexDirection: "column",
+                    overflow: "hidden",
+                  },
+                  typographyStylesProvider: {
+                    flexGrow: 1,
+                    display: "flex",
+                    flexDirection: "column",
+                    overflowY: "auto",
+                  },
+                  content: {
+                    flexGrow: 1,
+                    display: "flex",
+                    flexDirection: "column",
+
+                    "& > .ProseMirror": {
+                      flexGrow: 1,
+                    },
+                  },
+                }}
+              >
+                <RichTextEditor.Toolbar sticky>
+                  <RichTextEditor.ControlsGroup>
+                    <RichTextEditor.Bold />
+                    <RichTextEditor.Italic />
+                    <RichTextEditor.Underline />
+                  </RichTextEditor.ControlsGroup>
+
+                  <RichTextEditor.ControlsGroup>
+                    <RichTextEditor.Hr />
+                    <RichTextEditor.BulletList />
+                    <RichTextEditor.OrderedList />
+                  </RichTextEditor.ControlsGroup>
+
+                  <RichTextEditor.ControlsGroup>
+                    <RichTextEditor.Link />
+                    <RichTextEditor.Unlink />
+                  </RichTextEditor.ControlsGroup>
+
+                  <RichTextEditor.ControlsGroup>
+                    <RichTextEditor.AlignLeft />
+                    <RichTextEditor.AlignCenter />
+                    <RichTextEditor.AlignJustify />
+                    <RichTextEditor.AlignRight />
+                  </RichTextEditor.ControlsGroup>
+
+                  <RichTextEditor.ControlsGroup>
+                    <RichTextEditor.Undo />
+                    <RichTextEditor.Redo />
+                  </RichTextEditor.ControlsGroup>
+                </RichTextEditor.Toolbar>
+                {editor && (
+                  <BubbleMenu editor={editor}>
+                    <RichTextEditor.ControlsGroup>
+                      <RichTextEditor.Bold />
+                      <RichTextEditor.Italic />
+                      <RichTextEditor.Link />
+                    </RichTextEditor.ControlsGroup>
+                  </BubbleMenu>
+                )}
+                <RichTextEditor.Content
+                  onChange={(e) => console.log(editor.content)}
+                />
+              </RichTextEditor>
+            </div>
+            <div>
               <DateInput
                 size="md"
                 mb={16}
@@ -435,78 +518,6 @@ const BeitraegeNeuerBeitrag = () => {
               <Title ta="center" order={4} mb={16}>
                 Weitere Bilder (optional)
               </Title>
-            </div>
-            <div>
-              <RichTextEditor
-                editor={editor}
-                h={"100%"}
-                mah={"100%"}
-                styles={{
-                  root: {
-                    display: "flex",
-                    flexDirection: "column",
-                    overflow: "hidden",
-                  },
-                  typographyStylesProvider: {
-                    flexGrow: 1,
-                    display: "flex",
-                    flexDirection: "column",
-                    overflowY: "auto",
-                  },
-                  content: {
-                    flexGrow: 1,
-                    display: "flex",
-                    flexDirection: "column",
-
-                    "& > .ProseMirror": {
-                      flexGrow: 1,
-                    },
-                  },
-                }}
-              >
-                <RichTextEditor.Toolbar sticky>
-                  <RichTextEditor.ControlsGroup>
-                    <RichTextEditor.Bold />
-                    <RichTextEditor.Italic />
-                    <RichTextEditor.Underline />
-                  </RichTextEditor.ControlsGroup>
-
-                  <RichTextEditor.ControlsGroup>
-                    <RichTextEditor.Hr />
-                    <RichTextEditor.BulletList />
-                    <RichTextEditor.OrderedList />
-                  </RichTextEditor.ControlsGroup>
-
-                  <RichTextEditor.ControlsGroup>
-                    <RichTextEditor.Link />
-                    <RichTextEditor.Unlink />
-                  </RichTextEditor.ControlsGroup>
-
-                  <RichTextEditor.ControlsGroup>
-                    <RichTextEditor.AlignLeft />
-                    <RichTextEditor.AlignCenter />
-                    <RichTextEditor.AlignJustify />
-                    <RichTextEditor.AlignRight />
-                  </RichTextEditor.ControlsGroup>
-
-                  <RichTextEditor.ControlsGroup>
-                    <RichTextEditor.Undo />
-                    <RichTextEditor.Redo />
-                  </RichTextEditor.ControlsGroup>
-                </RichTextEditor.Toolbar>
-                {editor && (
-                  <BubbleMenu editor={editor}>
-                    <RichTextEditor.ControlsGroup>
-                      <RichTextEditor.Bold />
-                      <RichTextEditor.Italic />
-                      <RichTextEditor.Link />
-                    </RichTextEditor.ControlsGroup>
-                  </BubbleMenu>
-                )}
-                <RichTextEditor.Content
-                  onChange={(e) => console.log(editor.content)}
-                />
-              </RichTextEditor>
             </div>
           </SimpleGrid>
         </>

@@ -11,6 +11,7 @@ import {
 import { server } from "@/database/connection";
 import classes from "./FahrzeugCard.module.css";
 import NextLink from "next/link";
+import { IconZoomIn } from "@tabler/icons-react";
 
 export default function Fahrzeug({ fahrzeug, ...props }) {
   const xl = 4;
@@ -43,13 +44,15 @@ export default function Fahrzeug({ fahrzeug, ...props }) {
         </CardSection>
         <Group mt="xs">
           <Button
+            variant="outline"
             component={NextLink}
             href={`/feuerwehr/fuhrpark/${fahrzeug.Fahrzeug_id}`}
             radius="md"
             color="red.7"
             style={{ flex: 1 }}
+            leftSection={<IconZoomIn size={16} />}
           >
-            Mehr Infos
+            Mehr anzeigen
           </Button>
         </Group>
       </Card>
