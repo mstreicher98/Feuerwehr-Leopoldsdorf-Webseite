@@ -72,39 +72,40 @@ const FahrzeugSide = ({ fahrzeugId }) => {
               <p style={{ textAlign: "justify" }}>{fahrzeug.Beschreibung}</p>
             </TypographyStylesProvider>
           </Text>
-          <Table striped>
-            <TableTbody>
-              {" "}
-              <TableTr>
-                <TableTd>Funkname</TableTd>
-                <TableTd>{fahrzeug.Funkname}</TableTd>
-              </TableTr>
-              <TableTr>
-                <TableTd>Typ</TableTd>
-                <TableTd>{fahrzeug.Fahrzeugdaten.typ}</TableTd>
-              </TableTr>
-              <TableTr>
-                <TableTd>Aufbau</TableTd>
-                <TableTd>{fahrzeug.Fahrzeugdaten.aufbau}</TableTd>
-              </TableTr>
-              <TableTr>
-                <TableTd>Baujahr</TableTd>
-                <TableTd>{fahrzeug.Fahrzeugdaten.baujahr}</TableTd>
-              </TableTr>
-              <TableTr>
-                <TableTd>Leistung</TableTd>
-                <TableTd>{fahrzeug.Fahrzeugdaten.leistung}</TableTd>
-              </TableTr>
-              <TableTr>
-                <TableTd>Verwendung</TableTd>
-                <TableTd>{fahrzeug.Fahrzeugdaten.verwendung}</TableTd>
-              </TableTr>
-              <TableTr>
-                <TableTd>Beladung</TableTd>
-                <TableTd>{fahrzeug.Fahrzeugdaten.beladung}</TableTd>
-              </TableTr>
-            </TableTbody>
-          </Table>
+          {fahrzeug.Fahrzeugdaten !== null && (
+            <Table striped>
+              <TableTbody>
+                <TableTr>
+                  <TableTd>Funkname</TableTd>
+                  <TableTd>{fahrzeug.Funkname}</TableTd>
+                </TableTr>
+                <TableTr>
+                  <TableTd>Typ</TableTd>
+                  <TableTd>{fahrzeug.Fahrzeugdaten.typ}</TableTd>
+                </TableTr>
+                <TableTr>
+                  <TableTd>Aufbau</TableTd>
+                  <TableTd>{fahrzeug.Fahrzeugdaten.aufbau}</TableTd>
+                </TableTr>
+                <TableTr>
+                  <TableTd>Baujahr</TableTd>
+                  <TableTd>{fahrzeug.Fahrzeugdaten.baujahr}</TableTd>
+                </TableTr>
+                <TableTr>
+                  <TableTd>Leistung</TableTd>
+                  <TableTd>{fahrzeug.Fahrzeugdaten.leistung}</TableTd>
+                </TableTr>
+                <TableTr>
+                  <TableTd>Verwendung</TableTd>
+                  <TableTd>{fahrzeug.Fahrzeugdaten.verwendung}</TableTd>
+                </TableTr>
+                <TableTr>
+                  <TableTd>Beladung</TableTd>
+                  <TableTd>{fahrzeug.Fahrzeugdaten.beladung}</TableTd>
+                </TableTr>
+              </TableTbody>
+            </Table>
+          )}
         </>
       ) : (
         <></>

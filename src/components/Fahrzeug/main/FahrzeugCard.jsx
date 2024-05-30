@@ -8,14 +8,14 @@ import {
   Divider,
   GridCol,
 } from "@mantine/core";
-import { server } from "@/database/connection";
+;
 import classes from "./FahrzeugCard.module.css";
 import NextLink from "next/link";
 import { IconZoomIn } from "@tabler/icons-react";
 
 export default function Fahrzeug({ fahrzeug, ...props }) {
-  const xl = 4;
-  const lg = 4;
+  const xl = 3;
+  const lg = 3;
   const md = 6;
   const sm = 6;
   const xs = 12;
@@ -24,7 +24,7 @@ export default function Fahrzeug({ fahrzeug, ...props }) {
       <Card radius="md" p="md">
         <CardSection>
           <Image
-            src={`${server}${fahrzeug.Titelbild.data.attributes.url}`}
+            src={`${process.env.NEXT_API_URL}${fahrzeug.Titelbild.data.attributes.url}`}
             alt={fahrzeug.Kurzbezeichnung}
             height="auto"
             width="90%"

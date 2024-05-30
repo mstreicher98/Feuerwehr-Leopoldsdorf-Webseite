@@ -9,7 +9,6 @@ import {
 } from "@mantine/core";
 
 import classes from "./KommandoCard.module.css";
-import { server } from "@/database/connection";
 
 export default function KommandoCard({ person, ...props }) {
   return (
@@ -19,7 +18,7 @@ export default function KommandoCard({ person, ...props }) {
         p="xl"
         {...props}
       >
-        <Avatar src={`${server}${person.Profilbild.data.attributes.url}`} size={"100%"} radius={360} mx="auto" />
+        <Avatar src={`${process.env.NEXT_API_URL}${person.Profilbild.data.attributes.url}`} size={"100%"} radius={360} mx="auto" />
         <Text ta="center" fz="lg" fw={500} mt="md">
           {person.Nachname} {person.Vorname}
         </Text>

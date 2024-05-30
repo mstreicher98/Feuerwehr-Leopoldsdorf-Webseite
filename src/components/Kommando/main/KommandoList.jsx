@@ -1,5 +1,4 @@
 "use client";
-import { server, token } from "@/database/connection";
 import { SimpleGrid } from "@mantine/core";
 import axios from "axios";
 
@@ -12,7 +11,7 @@ const KommandoList = () => {
 
   useEffect(() => {
     axios
-      .get(`${server}/api/kommandos?populate=*&bearer=${token}`)
+      .get(`/api/kommando`)
       .then((kommandoRes) => {
         const list = (
           <>

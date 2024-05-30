@@ -12,7 +12,6 @@ import {
   UnstyledButton,
 } from "@mantine/core";
 import axios from "axios";
-import { server, token } from "@/database/connection";
 
 import classes from "./MannschaftList.module.css";
 import cardClasses from "./MannschaftCard.module.css";
@@ -100,7 +99,7 @@ const MannschaftCard = ({ mann, xl, lg, md, sm, xs, ...props }) => {
     <GridCol span={{ xs, sm, md, lg, xl }}>
       <Card radius="md" p="xl" {...props}>
         <Avatar
-          src={`${server}${mann.Profilbild.data.attributes.url}`}
+          src={`${process.env.NEXT_API_URL}${mann.Profilbild.data.attributes.url}`}
           size={"100%"}
           radius={360}
           mx="auto"
@@ -196,7 +195,7 @@ const MannschaftList = () => {
   useEffect(() => {
     axios
       .get(
-        `${server}/api/mannschafts?populate=*&bearer=${token}&filters[Chargen][$eq]=true`
+        `/api/mannschaft/chargen`
       )
       .then((res) => {
         const list = res.data.data.map((mann) => {
@@ -217,7 +216,7 @@ const MannschaftList = () => {
 
     axios
       .get(
-        `${server}/api/mannschafts?populate=*&bearer=${token}&filters[Dienststatus][$eq]=Aktiv&filters[Chargen][$eq]=false`
+        `/api/mannschaft/aktiv`
       )
       .then((res) => {
         const list = res.data.data.map((mann) => {
@@ -238,7 +237,7 @@ const MannschaftList = () => {
 
     axios
       .get(
-        `${server}/api/mannschafts?populate=*&bearer=${token}&filters[Dienststatus][$eq]=Reserve&filters[Chargen][$eq]=false`
+        `/api/mannschaft/reserve`
       )
       .then((res) => {
         const list = res.data.data.map((mann) => {
@@ -259,7 +258,7 @@ const MannschaftList = () => {
 
     axios
       .get(
-        `${server}/api/mannschafts?populate=*&bearer=${token}&filters[Dienststatus][$eq]=Jugend`
+        `/api/mannschaft/jugend`
       )
       .then((res) => {
         const list = res.data.data.map((mann) => {
