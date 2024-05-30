@@ -1,14 +1,14 @@
+"use server";
 import FahrzeugSide from "@/components/Fahrzeug/main/FahrzeugSide";
 import Main from "../../../../../components/Main/Main";
 import { notFound } from "next/navigation";
 import axios from "axios";
-import { server, token } from "@/database/connection";
 
 
 export async function generateMetadata({ params }) {
   await axios
   .get(
-    `${server}/api/fahrzeuges?filters[Fahrzeug_id][$eq]=${params.id}&populate=*&bearer=${token}`
+    `${process.env.NEXT_API_URL}/api/fahrzeuges?filters[Fahrzeug_id][$eq]=${params.id}&populate=*&bearer=${process.env.NEXT_API_TOKEN}`
   )
   .then((res) => {
     if (!res.data.data.length > 0) {

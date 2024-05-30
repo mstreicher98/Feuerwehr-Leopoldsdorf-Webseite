@@ -21,12 +21,10 @@ const FahrzeugSide = ({ fahrzeugId }) => {
   useEffect(() => {
     axios
       .get(
-        `${server}/api/fahrzeuges?filters[Fahrzeug_id][$eq]=${fahrzeugId}&populate=*&bearer=${token}`
+        `/api/fuhrpark/${fahrzeugId}`
       )
       .then((res) => {
-        console.log(res.data.data[0].attributes);
         if (res.data.data.length > 0) {
-          console.log(res.data.data[0].attributes.Fahrzeugdaten);
           setFahrzeug(res.data.data[0].attributes);
           setLoading(false);
         }
@@ -52,13 +50,13 @@ const FahrzeugSide = ({ fahrzeugId }) => {
             >
               <CarouselSlide>
                 <Image
-                  src={`${server}${fahrzeug.Titelbild.data.attributes.url}`}
+                  src={`${process.env.NEXT_API_URL}${fahrzeug.Titelbild.data.attributes.url}`}
                   alt={fahrzeug.Kurzbezeichnung}
                 />
               </CarouselSlide>
               <CarouselSlide>
                 <Image
-                  src={`${server}${fahrzeug.Titelbild2.data.attributes.url}`}
+                  src={`${process.env.NEXT_API_URL}${fahrzeug.Titelbild2.data.attributes.url}`}
                   alt={fahrzeug.Kurzbezeichnung}
                 />
               </CarouselSlide>
