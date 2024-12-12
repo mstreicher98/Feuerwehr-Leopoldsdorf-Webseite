@@ -1,6 +1,6 @@
-import MannschaftList from "@/components/Mannschaft/main/MannschaftList";
 import Main from "@/components/Main/Main";
 import { Banner } from "@/components/Banner/Mannschaft/Banner";
+import MannschaftList from "@/components/Mannschaft/main/MannschaftList";
 
 export const metadata = {
   title: "Mannschaft | Freiwillige Feuerwehr Leopoldsdorf",
@@ -17,3 +17,4 @@ const Mannschaft = () => {
     </>
   );
 }
+export default Mannschaft;

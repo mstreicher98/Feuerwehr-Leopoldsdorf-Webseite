@@ -16,7 +16,6 @@ export function Banner() {
             </Title>
           </Box>
         </Center>
-
       </div>
     </div>
   );

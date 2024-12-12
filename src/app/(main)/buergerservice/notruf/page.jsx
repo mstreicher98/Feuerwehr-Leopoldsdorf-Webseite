@@ -31,13 +31,6 @@ const Notruf = () => {
         </TypographyStylesProvider>
       </Text>
 
-
-
-
-
-
-
-
       <Text component="div" ta="center" mb={30}>
         <TypographyStylesProvider pl={0}>
           <h3 className={classes.highlight}>Was ist passiert?</h3>

@@ -101,7 +101,7 @@ const MannschaftCard = ({ mann, xl, lg, md, sm, xs, ...props }) => {
       <Card radius="md" p="xl" {...props}>
         <Avatar
           src={`${server}${mann.Profilbild.data.attributes.url}`}
-          size={"100%"}
+          size={" 100%"}
           radius={360}
           mx="auto"
         />
